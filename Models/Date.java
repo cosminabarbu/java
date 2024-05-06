@@ -9,7 +9,6 @@ public class Date {
 
     public Date() {
 
-
     }
 
     public Date(int day, int month, int year) {
