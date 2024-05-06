@@ -5,6 +5,7 @@ public class Author {
     private String nationality;
     private Integer birthYear;
 
+    public Author() {}
 
     public Author(String name, String nationality, Integer birthYear) {
         this.name = name;
