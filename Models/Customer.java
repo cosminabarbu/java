@@ -10,6 +10,11 @@ abstract class Customer {
     private int customerId;
     private static int nextId = 1;
 
+    public Customer() {
+        this.customerId = nextId;
+        nextId++;
+    }
+
     public Customer(String firstName, String lastName, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;

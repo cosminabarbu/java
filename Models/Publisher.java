@@ -6,7 +6,8 @@ public class Publisher {
     private String name;
     private ArrayList<Author> authors;
 
-    public Publisher() {}
+    public Publisher() {
+    }
 
     public Publisher(String name, ArrayList<Author> authors) {
         this.name = name;

@@ -12,7 +12,10 @@ public class Book {
     private Integer price;
     private Integer year;
 
-    public Book() {}
+    public Book() {
+        this.bookId = nextId;
+        nextId++;
+    }
 
     public Book(String title, Author author, Section section, Publisher publisher, Integer pageNo, Integer rating, Integer bookId, Integer nextId, Integer price, Integer year) {
         this.title = title;

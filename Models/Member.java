@@ -5,6 +5,9 @@ class Member extends Customer {
     private int memberId;
     private Date subscriptionDate;
 
+    public Member() {
+    }
+
     public Member(String firstName, String lastName, Date birthday, int memberId, Date subscriptionDate) {
         super(firstName, lastName, birthday);
         this.memberId = memberId;

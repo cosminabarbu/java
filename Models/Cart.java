@@ -6,6 +6,9 @@ public class Cart {
     private Customer customer;
     private List<Book> books;
 
+    public Cart() {
+    }
+
     public Cart(Customer customer) {
         this.customer = customer;
         this.books = new ArrayList<>();

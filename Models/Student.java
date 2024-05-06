@@ -5,6 +5,9 @@ class Student extends Customer {
     private int studentId;
     private String university;
 
+    public Student() {
+    }
+
     public Student(String firstName, String lastName, Date birthday, int studentId, String university) {
         super(firstName, lastName, birthday);
         this.studentId = studentId;
