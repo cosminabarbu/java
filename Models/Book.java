@@ -109,4 +109,17 @@ public class Book {
     public void setYear(Integer year) {
         this.year = year;
     }
+
+    public void printDetails() {
+        System.out.println("Book Details:");
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author.getName());
+        System.out.println("Section: " + section);
+        System.out.println("Publisher: " + publisher.getName());
+        System.out.println("Page Number: " + pageNo);
+        System.out.println("Rating: " + rating);
+        System.out.println("Book ID: " + bookId);
+        System.out.println("Price: $" + price);
+        System.out.println("Year: " + year);
+    }
 }

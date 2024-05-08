@@ -1,8 +1,10 @@
 package Models;
+import Models.Customer.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart {
+public class Cart implements Sum{
     private Customer customer;
     private List<Book> books;
 
@@ -13,8 +15,6 @@ public class Cart {
         this.customer = customer;
         this.books = new ArrayList<>();
     }
-
-    // Getters and setters for properties
 
     public Customer getCustomer() {
         return customer;
@@ -40,5 +40,16 @@ public class Cart {
     // Method to remove a book from the list of books in the cart
     public void removeBook(Book book) {
         books.remove(book);
+    }
+
+    @Override
+    public double getTotal() {
+        double total = 0;
+        for (Book book : books) {
+            total += book.getPrice();
+        }
+        double discount = customer.getDiscount();
+        total *= discount;
+        return total;
     }
 }

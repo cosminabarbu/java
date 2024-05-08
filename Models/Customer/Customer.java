@@ -1,9 +1,7 @@
-package Models;
-import java.util.ArrayList;
+package Models.Customer;
 import java.util.Date;
-import java.util.List;
 
-abstract class Customer {
+public abstract class Customer {
     private String firstName;
     private String lastName;
     private Date birthday;
@@ -60,6 +58,13 @@ abstract class Customer {
 
     public static void setNextId(int nextId) {
         Customer.nextId = nextId;
+    }
+
+    public void printDetails() {
+        System.out.println("Customer Details:");
+        System.out.println("Customer ID: " + customerId);
+        System.out.println("Name: " + firstName + " " + lastName);
+        System.out.println("Birthday: " + birthday);
     }
 
     public abstract double getDiscount();

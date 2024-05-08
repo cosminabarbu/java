@@ -1,7 +1,6 @@
 package Models;
 import java.util.ArrayList;
 
-
 public class Publisher {
     private String name;
     private ArrayList<Author> authors;

@@ -1,4 +1,4 @@
-package Models;
+package Models.Customer;
 import java.util.Date;
 
 class Regular extends Customer {

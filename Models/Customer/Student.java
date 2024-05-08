@@ -1,4 +1,4 @@
-package Models;
+package Models.Customer;
 import java.util.Date;
 
 class Student extends Customer {
@@ -12,6 +12,13 @@ class Student extends Customer {
         super(firstName, lastName, birthday);
         this.studentId = studentId;
         this.university = university;
+    }
+
+    @Override
+    public void printDetails() {
+        super.printDetails();
+        System.out.println("Student ID: " + studentId);
+        System.out.println("University: " + university);
     }
 
     @Override
