@@ -1,23 +1,21 @@
 package Models.Customer;
+
 import java.util.Date;
 
-class Member extends Customer {
-    private int memberId;
+public class Member extends Customer {
     private Date subscriptionDate;
 
     public Member() {
     }
 
-    public Member(String firstName, String lastName, Date birthday, int memberId, Date subscriptionDate) {
-        super(firstName, lastName, birthday);
-        this.memberId = memberId;
+    public Member(String firstName, String lastName, Date birthday, String address,  int memberId, Date subscriptionDate) {
+        super(firstName, lastName, birthday, address);
         this.subscriptionDate = subscriptionDate;
     }
 
     @Override
     public void printDetails() {
         super.printDetails();
-        System.out.println("Member ID: " + memberId);
         System.out.println("Subscription Date: " + subscriptionDate);
     }
 

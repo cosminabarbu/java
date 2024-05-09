@@ -1,15 +1,15 @@
 package Models.Customer;
 import java.util.Date;
 
-class Student extends Customer {
+public class Student extends Customer {
     private int studentId;
     private String university;
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, Date birthday, int studentId, String university) {
-        super(firstName, lastName, birthday);
+    public Student(String firstName, String lastName, Date birthday, String address, int studentId, String university) {
+        super(firstName, lastName, birthday, address);
         this.studentId = studentId;
         this.university = university;
     }

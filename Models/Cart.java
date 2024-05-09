@@ -32,16 +32,6 @@ public class Cart implements Sum{
         this.books = books;
     }
 
-    // Method to add a book to the list of books in the cart
-    public void addBook(Book book) {
-        books.add(book);
-    }
-
-    // Method to remove a book from the list of books in the cart
-    public void removeBook(Book book) {
-        books.remove(book);
-    }
-
     @Override
     public double getTotal() {
         double total = 0;
