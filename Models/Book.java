@@ -5,7 +5,6 @@ public class Book extends LibraryItem{
     private Section section;
     private Publisher publisher;
     private Integer pageNo;
-    private Integer rating;
     private Integer bookId;
     private Integer nextId;
     private Integer year;
@@ -15,13 +14,12 @@ public class Book extends LibraryItem{
         nextId++;
     }
 
-    public Book(String title, double price, int stock, Author author, Integer year, Integer nextId, Integer bookId, Integer rating, Integer pageNo, Publisher publisher, Section section) {
-        super(title, price, stock);
+    public Book(String title, double price, int stock, double rating, Author author, Integer year, Integer nextId, Integer bookId, Integer pageNo, Publisher publisher, Section section) {
+        super(title, price, stock, rating);
         this.author = author;
         this.year = year;
         this.nextId = nextId;
         this.bookId = bookId;
-        this.rating = rating;
         this.pageNo = pageNo;
         this.publisher = publisher;
         this.section = section;
@@ -59,14 +57,6 @@ public class Book extends LibraryItem{
         this.pageNo = pageNo;
     }
 
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
-
     public Integer getBookId() {
         return bookId;
     }
@@ -92,15 +82,15 @@ public class Book extends LibraryItem{
     }
 
     @Override
-    public void printDetails() {
-        System.out.println("Book Details:");
-        super.printDetails();
-        System.out.println("Author: " + author.getName());
-        System.out.println("Section: " + section);
-        System.out.println("Publisher: " + publisher.getName());
-        System.out.println("Page Number: " + pageNo);
-        System.out.println("Rating: " + rating);
-        System.out.println("Book ID: " + bookId);
-        System.out.println("Year: " + year);
+    public String toString() {
+        return "Book{" +
+                "author=" + author +
+                ", section=" + section +
+                ", publisher=" + publisher +
+                ", pageNo=" + pageNo +
+                ", bookId=" + bookId +
+                ", nextId=" + nextId +
+                ", year=" + year +
+                '}';
     }
 }

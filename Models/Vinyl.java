@@ -8,13 +8,12 @@ public class Vinyl extends LibraryItem {
     public Vinyl() {
     }
 
-    public Vinyl(String title, double price, int stock, String singer, String genre, Boolean specialEdition) {
-        super(title, price, stock);
+    public Vinyl(String title, double price, int stock, double rating, String singer, String genre, Boolean specialEdition) {
+        super(title, price, stock, rating);
         this.singer = singer;
         this.genre = genre;
         this.specialEdition = specialEdition;
     }
-
 
     public String getSinger() {
         return singer;
@@ -41,11 +40,11 @@ public class Vinyl extends LibraryItem {
     }
 
     @Override
-    public void printDetails() {
-        System.out.println("Vinyl details: ");
-        super.printDetails();
-        System.out.println("Singer: " + singer);
-        System.out.println("Genre: " + genre);
-        System.out.println("SpecialEdition: " + specialEdition);
+    public String toString() {
+        return "Vinyl{" +
+                "singer='" + singer + '\'' +
+                ", genre='" + genre + '\'' +
+                ", specialEdition=" + specialEdition +
+                '}';
     }
 }
