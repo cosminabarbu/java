@@ -14,7 +14,7 @@ public class BookManagement {
     public void delete(int bookId){
         if(booksList.containsKey(bookId)){
             booksList.remove(bookId);
-            System.out.println("Book with id" + bookId + " was deleted successfully");
+            System.out.println("Book with id" + bookId + " was removed");
         } else {
             System.out.println("Book with id" + bookId + " was not found");
         }
