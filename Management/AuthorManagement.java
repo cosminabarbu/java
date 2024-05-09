@@ -39,10 +39,6 @@ public class AuthorManagement {
         return null;
     }
 
-    public Author get(int index){
-        return authorsList.get(index);
-
-    }
 
     public void update(String name, Author updatedAuthor){
         Iterator<Author> iterator = authorsList.iterator();
