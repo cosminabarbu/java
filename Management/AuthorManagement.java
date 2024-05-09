@@ -28,7 +28,7 @@ public class AuthorManagement {
         System.out.println("Author" + name + "was not found");
     }
 
-    public Author getAuthor(String name){
+    public Author get(String name){
         Iterator<Author> iterator = authorsList.iterator();
         while(iterator.hasNext()){
             Author author = iterator.next();
@@ -39,7 +39,7 @@ public class AuthorManagement {
         return null;
     }
 
-    public Author getAuthor(int index){
+    public Author get(int index){
         return authorsList.get(index);
 
     }
