@@ -1,6 +1,6 @@
 package Management;
 
-import Models.Book;
+import Models.Items.Book;
 import java.util.HashMap;
 import java.util.Map;
 

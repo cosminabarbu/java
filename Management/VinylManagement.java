@@ -1,6 +1,6 @@
 package Management;
 
-import Models.Vinyl;
+import Models.Items.Vinyl;
 import java.util.HashMap;
 import java.util.Map;
 

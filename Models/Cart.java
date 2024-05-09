@@ -1,5 +1,7 @@
 package Models;
 import Models.Customer.Customer;
+import Models.Items.Book;
+import Models.Items.Vinyl;
 
 import java.util.ArrayList;
 import java.util.List;

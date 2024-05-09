@@ -1,9 +1,9 @@
 package Management;
 
-import Models.Book;
+import Models.Items.Book;
 import Models.Cart;
 import Models.Customer.Customer;
-import Models.Vinyl;
+import Models.Items.Vinyl;
 
 import java.util.ArrayList;
 import java.util.HashMap;

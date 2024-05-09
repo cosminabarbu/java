@@ -1,4 +1,4 @@
-package Models;
+package Models.Items;
 
 public class Vinyl extends LibraryItem {
     private String singer;

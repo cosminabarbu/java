@@ -1,6 +1,10 @@
-package Models;
+package Models.Items;
 
-public class Book extends LibraryItem{
+import Models.Author;
+import Models.Publisher;
+import Models.Section;
+
+public class Book extends LibraryItem {
     private Author author;
     private Section section;
     private Publisher publisher;
