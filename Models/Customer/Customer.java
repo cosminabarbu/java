@@ -5,6 +5,7 @@ public abstract class Customer {
     private String firstName;
     private String lastName;
     private Date birthday;
+    private String address;
     private int customerId;
     private static int nextId = 1;
 
@@ -13,10 +14,11 @@ public abstract class Customer {
         nextId++;
     }
 
-    public Customer(String firstName, String lastName, Date birthday) {
+    public Customer(String firstName, String lastName, Date birthday, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
+        this.address = address;
         this.customerId = nextId++;
     }
 
@@ -44,6 +46,14 @@ public abstract class Customer {
         this.birthday = birthday;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getCustomerId() {
         return customerId;
     }
@@ -65,6 +75,7 @@ public abstract class Customer {
         System.out.println("Customer ID: " + customerId);
         System.out.println("Name: " + firstName + " " + lastName);
         System.out.println("Birthday: " + birthday);
+        System.out.println("Address: " + address);
     }
 
     public abstract double getDiscount();

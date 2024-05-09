@@ -1,13 +1,13 @@
 package Models.Customer;
 import java.util.Date;
 
-class Regular extends Customer {
+public class Regular extends Customer {
 
     public Regular() {
     }
 
-    public Regular(String firstName, String lastName, Date birthday) {
-        super(firstName, lastName, birthday);
+    public Regular(String firstName, String lastName, Date birthday, String address) {
+        super(firstName, lastName, birthday, address);
     }
 
     @Override
