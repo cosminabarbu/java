@@ -14,18 +14,30 @@ public class Publisher {
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+
         this.name = name;
     }
 
     public ArrayList<Author> getAuthors() {
+
         return authors;
     }
 
     public void setAuthors(ArrayList<Author> authors) {
+
         this.authors = authors;
+    }
+
+    @Override
+    public String toString() {
+        return "Publisher{" +
+                "name='" + name + '\'' +
+                ", authors=" + authors +
+                '}';
     }
 }

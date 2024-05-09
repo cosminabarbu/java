@@ -37,6 +37,14 @@ public class Author {
         this.birthYear = birthYear;
     }
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", birthYear=" + birthYear +
+                '}';
+    }
 }
 
 

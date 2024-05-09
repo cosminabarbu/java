@@ -1,18 +1,26 @@
 package Models;
 
+import Models.Customer.Customer;
+
 public class LibraryItem implements Item{
     private String title;
     private double price;
     private int stock;
     private double rating;
+    private int itemId;
+    private static int nextId = 1;
 
-    public LibraryItem() {}
+    public LibraryItem() {
+        this.itemId = nextId;
+        nextId++;
+    }
 
     public LibraryItem(String title, double price, int stock, double rating) {
         this.title = title;
         this.price = price;
         this.stock = stock;
         this.rating = rating;
+        this.itemId = nextId ++;
     }
 
     public String getTitle() {
@@ -47,6 +55,14 @@ public class LibraryItem implements Item{
         this.rating = rating;
     }
 
+    public int getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
     @Override
     public boolean isInStock(){
         return stock != 0;
@@ -63,6 +79,8 @@ public class LibraryItem implements Item{
                 "title='" + title + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
+                ", rating=" + rating +
+                ", itemId=" + itemId +
                 '}';
     }
 }
