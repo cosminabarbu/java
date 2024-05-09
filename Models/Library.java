@@ -1,5 +1,7 @@
 package Models;
 import Models.Customer.Customer;
+import Models.Items.Book;
+
 import java.util.List;
 
 public class Library {

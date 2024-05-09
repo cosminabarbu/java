@@ -1,4 +1,4 @@
-package Models;
+package Models.Items;
 
 public interface Item {
     public boolean isInStock();

@@ -1,8 +1,6 @@
-package Models;
+package Models.Items;
 
-import Models.Customer.Customer;
-
-public class LibraryItem implements Item{
+public class LibraryItem implements Item {
     private String title;
     private double price;
     private int stock;
