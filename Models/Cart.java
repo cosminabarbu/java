@@ -7,6 +7,7 @@ import java.util.List;
 public class Cart implements Sum{
     private Customer customer;
     private List<Book> books;
+    private List<Vinyl> vinyls;
 
     public Cart() {
     }
@@ -14,6 +15,7 @@ public class Cart implements Sum{
     public Cart(Customer customer) {
         this.customer = customer;
         this.books = new ArrayList<>();
+        this.vinyls = new ArrayList<>();
     }
 
     public Customer getCustomer() {
@@ -32,14 +34,22 @@ public class Cart implements Sum{
         this.books = books;
     }
 
-    @Override
-    public double getTotal() {
-        double total = 0;
-        for (Book book : books) {
-            total += book.getPrice();
-        }
-        double discount = customer.getDiscount();
-        total *= discount;
-        return total;
+    public List<Vinyl> getVinyls() {
+        return vinyls;
     }
+
+    public void setVinyls(List<Vinyl> vinyls) {
+        this.vinyls = vinyls;
+    }
+
+//    @Override
+//    public double getTotal() {
+//        double total = 0;
+//        for (Book book : books) {
+//            total += book.getPrice();
+//        }
+//        double discount = customer.getDiscount();
+//        total *= discount;
+//        return total;
+//    }
 }
