@@ -2,7 +2,6 @@ package Models;
 
 public class Book extends LibraryItem{
     private Author author;
-    private String title;
     private Section section;
     private Publisher publisher;
     private Integer pageNo;
@@ -16,17 +15,16 @@ public class Book extends LibraryItem{
         nextId++;
     }
 
-    public Book(String name, String type, double price, int stock, Author author, String title, Section section, Publisher publisher, Integer pageNo, Integer rating, Integer bookId, Integer nextId, Integer year) {
-        super(name, type, price, stock);
+    public Book(String title, double price, int stock, Author author, Integer year, Integer nextId, Integer bookId, Integer rating, Integer pageNo, Publisher publisher, Section section) {
+        super(title, price, stock);
         this.author = author;
-        this.title = title;
-        this.section = section;
-        this.publisher = publisher;
-        this.pageNo = pageNo;
-        this.rating = rating;
-        this.bookId = bookId;
-        this.nextId = nextId;
         this.year = year;
+        this.nextId = nextId;
+        this.bookId = bookId;
+        this.rating = rating;
+        this.pageNo = pageNo;
+        this.publisher = publisher;
+        this.section = section;
     }
 
     public Author getAuthor() {
@@ -97,7 +95,6 @@ public class Book extends LibraryItem{
     public void printDetails() {
         System.out.println("Book Details:");
         super.printDetails();
-        System.out.println("Title: " + title);
         System.out.println("Author: " + author.getName());
         System.out.println("Section: " + section);
         System.out.println("Publisher: " + publisher.getName());

@@ -1,7 +1,6 @@
 package Models;
 
 public class Vinyl extends LibraryItem {
-    private String title;
     private String singer;
     private String genre;
     private Boolean specialEdition;
@@ -9,21 +8,13 @@ public class Vinyl extends LibraryItem {
     public Vinyl() {
     }
 
-    public Vinyl(String name, String type, double price, int stock, String title, String singer, String genre, Boolean specialEdition) {
-        super(name, type, price, stock);
-        this.title = title;
+    public Vinyl(String title, double price, int stock, String singer, String genre, Boolean specialEdition) {
+        super(title, price, stock);
         this.singer = singer;
         this.genre = genre;
         this.specialEdition = specialEdition;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 
     public String getSinger() {
         return singer;
@@ -53,7 +44,6 @@ public class Vinyl extends LibraryItem {
     public void printDetails() {
         System.out.println("Vinyl details: ");
         super.printDetails();
-        System.out.println("Title: " + title);
         System.out.println("Singer: " + singer);
         System.out.println("Genre: " + genre);
         System.out.println("SpecialEdition: " + specialEdition);

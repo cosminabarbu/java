@@ -1,38 +1,26 @@
 package Models;
 
 public class LibraryItem implements Item{
-    private String name;
-    private String type;
+    private String title;
     private double price;
     private int stock;
 
     public LibraryItem() {}
 
-    public LibraryItem(String name, String type, double price, int stock) {
-        this.name = name;
-        this.type = type;
+    public LibraryItem(String title, double price, int stock) {
+        this.title = title;
         this.price = price;
         this.stock = stock;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(String type) {
-        this.type = type;
+    public void setTitle(String name) {
+        this.title = title;
     }
 
     @Override
@@ -56,8 +44,7 @@ public class LibraryItem implements Item{
     }
 
     public void printDetails(){
-        System.out.println("Details about" + name);
-        System.out.println("Type: " + type);
+        System.out.println("Details about" + title);
         System.out.println("Price: " + price);
         System.out.println("Stock: " + stock);
     }
