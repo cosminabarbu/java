@@ -85,7 +85,7 @@ public class CartManagement {
         List<Book> books = cart.getBooks();
         System.out.println("Books in Cart:");
         for (Book book : books) {
-            book.printDetails();
+            System.out.println(book);
         }
     }
 }

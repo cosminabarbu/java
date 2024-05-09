@@ -4,7 +4,7 @@ import Models.Customer.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cart implements Sum{
+public class Cart {
     private Customer customer;
     private List<Book> books;
     private List<Vinyl> vinyls;
