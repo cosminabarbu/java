@@ -2,9 +2,6 @@ package Service.AuditService;
 
 import Models.Author;
 import Management.AuthorManagement;
-import java.io.IOException;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthorService {
@@ -28,6 +25,24 @@ public class AuthorService {
 
         writeService.writeAction("added author");
 //        return result;
+
+    }
+
+    public Author getAuthor(String name){
+        Author author = authorManagement.get(name);
+        return author;
+    }
+
+    public void updateAuthor(Author author){
+        Scanner scanner = new Scanner(System.in);
+        WriteService writeService = new WriteService();
+        System.out.println("Enter the new nationality of the author: ");
+        String newNationality = scanner.nextLine();
+        writeService.writeAction("updated author nationality");
+
+    }
+
+    public void deleteAuthor(String name){
 
     }
 }

@@ -41,7 +41,7 @@ public class AuthorManagement {
     }
 
 
-    public void update(String name, Author updatedAuthor){
+    public void update(String name){
         Iterator<Author> iterator = authorsList.iterator();
         while(iterator.hasNext()){
             Author author = iterator.next();

@@ -37,7 +37,7 @@ public class PublisherManagement {
         return null;
     }
 
-    public void update(String name, Publisher updatedPublisher){
+    public void update(String name){
         Iterator<Publisher> iterator = publishersList.iterator();
         while(iterator.hasNext()){
             Publisher publisher = iterator.next();
