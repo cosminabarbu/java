@@ -8,6 +8,7 @@ import Models.Section;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class BookService {
 
                 String title = parts[0];
                 double price = Double.parseDouble(parts[1]);
-                int quantity = Integer.parseInt(parts[2]);
+                int stock = Integer.parseInt(parts[2]);
                 double rating = Double.parseDouble(parts[3]);
                 String authorName = parts[4];
                 String sectionName = parts[5];
@@ -32,8 +33,8 @@ public class BookService {
                 int pageNo = Integer.parseInt(parts[7]);
                 int year = Integer.parseInt(parts[8]);
 
-                Author author = new Author(authorName, "", 0); // Creating a dummy author with empty nationality and birth year
-                Section section = new Section(sectionName);
+                Author author = new Author(authorName, "", 0);
+                Section section = Section.valueOf(sectionName);;
                 Publisher publisher = new Publisher(publisherName);
 
                 Book book = new Book(title, author, section, publisher, pageNo, year);

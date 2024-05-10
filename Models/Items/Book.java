@@ -11,7 +11,7 @@ public class Book extends LibraryItem {
     private Integer pageNo;
     private Integer year;
 
-    public Book(String title, double price, int stock, double rating, Author author, Integer year, Integer nextId, Integer bookId, Integer pageNo, Publisher publisher, Section section) {
+    public Book(String title, double price, int stock, double rating, Author author, Section section, Publisher publisher, Integer pageNo, Integer year) {
         super(title, price, stock, rating);
         this.author = author;
         this.year = year;
