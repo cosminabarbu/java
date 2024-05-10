@@ -8,8 +8,6 @@ import java.util.Iterator;
 public class PublisherManagement {
     private List<Publisher> publishersList;
 
-    private PublisherManagement(){ this.publishersList = new ArrayList<Publisher>();}
-
     public void add(Publisher publisher){
         this.publishersList.add(publisher);
     }

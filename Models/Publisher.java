@@ -40,4 +40,8 @@ public class Publisher {
                 ", authors=" + authors +
                 '}';
     }
+
+    public void addAuthor(Author author) {
+        authors.add(author);
+    }
 }
