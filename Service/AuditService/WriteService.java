@@ -1,4 +1,4 @@
-package Service;
+package Service.AuditService;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,10 +10,10 @@ public class WriteService {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public static void main(String[] args) {
-        writeLog("something happened");
+        writeAction("something happened");
     }
 
-    public static void writeLog(String action) {
+    public static void writeAction(String action) {
         try (FileWriter writer = new FileWriter(path, true)){
             long currentTimestamp = System.currentTimeMillis();
             String formattedDate = dateFormat.format(new Date(currentTimestamp));

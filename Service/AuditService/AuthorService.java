@@ -1,10 +1,10 @@
-package Service;
+package Service.AuditService;
 
+import Models.Author;
 import Management.AuthorManagement;
-import Models.Items.Item;
-import Models.Items.Author;
 import java.io.IOException;
-import java.util.ArrayList;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthorService {
@@ -14,7 +14,7 @@ public class AuthorService {
         this.authorManagement = new AuthorManagement();
     }
 
-    public Author addAuthor(){
+    public void addAuthor(){
         Scanner scanner = new Scanner(System.in);
         WriteService writeService = new WriteService();
         System.out.println("Enter the name of the author: ");
@@ -25,5 +25,9 @@ public class AuthorService {
         int birthYear = scanner.nextInt();
         Author author = new Author(name, nationality, birthYear);
         Author result = authorManagement.add(author);
+
+        writeService.writeAction("added author");
+//        return result;
+
     }
 }

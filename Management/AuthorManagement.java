@@ -8,12 +8,13 @@ import java.util.Iterator;
 public class AuthorManagement {
     private List<Author> authorsList;
 
-    private AuthorManagement() {
-        this.authorsList = new ArrayList<Author>();
-    }
+//   // private AuthorManagement() {
+//        this.authorsList = new ArrayList<Author>();
+//    }
 
-    public void add(Author author) {
+    public Author add(Author author) {
         authorsList.add(author);
+        return author;
     }
 
     public void delete(String name){
