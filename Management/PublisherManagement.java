@@ -42,7 +42,6 @@ public class PublisherManagement {
         while(iterator.hasNext()){
             Publisher publisher = iterator.next();
             if(publisher.getName().equals(name)){
-                int index = iterator.previousIndex();
                 iterator.set(updatedPublisher);
                 return;
             }

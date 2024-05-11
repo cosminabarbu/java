@@ -48,7 +48,6 @@ public class AuthorManagement {
         while(iterator.hasNext()){
             Author author = iterator.next();
             if(author.getName().equals(name)){
-                int index = iterator.previousIndex();
                 iterator.set(updatedAuthor);
                 return;
             }
