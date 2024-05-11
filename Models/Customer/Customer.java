@@ -2,12 +2,12 @@ package Models.Customer;
 import java.util.Date;
 
 public abstract class Customer {
-    private String firstName;
-    private String lastName;
-    private Date birthday;
-    private String address;
-    private int customerId;
-    private static int nextId = 1;
+    protected String firstName;
+    protected String lastName;
+    protected Date birthday;
+    protected String address;
+    protected int customerId;
+    protected static int nextId = 1;
 
     public Customer() {
         this.customerId = nextId;
@@ -70,12 +70,15 @@ public abstract class Customer {
         Customer.nextId = nextId;
     }
 
-    public void printDetails() {
-        System.out.println("Customer Details:");
-        System.out.println("Customer ID: " + customerId);
-        System.out.println("Name: " + firstName + " " + lastName);
-        System.out.println("Birthday: " + birthday);
-        System.out.println("Address: " + address);
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", customerId=" + customerId +
+                '}';
     }
 
     public abstract double getDiscount();

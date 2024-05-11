@@ -13,6 +13,8 @@ import java.util.Map;
 public class CartManagement {
     private List<Cart> cartsList = new ArrayList<Cart>();
 
+
+
     public double getTotal(int cartIndex) {
         if (cartIndex < 0 || cartIndex >= cartsList.size()) {
             System.out.println("Invalid cart index.");

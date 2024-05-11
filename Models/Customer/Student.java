@@ -15,10 +15,16 @@ public class Student extends Customer {
     }
 
     @Override
-    public void printDetails() {
-        super.printDetails();
-        System.out.println("Student ID: " + studentId);
-        System.out.println("University: " + university);
+    public String toString() {
+        return "Student{" +
+                "address='" + address + '\'' +
+                ", birthday=" + birthday +
+                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", university='" + university + '\'' +
+                ", studentId=" + studentId +
+                ", customerId=" + customerId +
+                '}';
     }
 
     @Override

@@ -1,7 +1,11 @@
 package Management;
 
 import Models.Items.Book;
+import Models.Section;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BookManagement {
@@ -38,5 +42,26 @@ public class BookManagement {
         } else {
             System.out.println("Book with id" + bookId + " was not found");
         }
+    }
+
+    public Book findByTitle(String title) {
+        for (Book book : booksList.values()) {
+            if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                System.out.println("Book with title containing \"" + title + "\" found");
+                return book;
+            }
+        }
+        System.out.println("Book with title containing \"" + title + "\" was not found");
+        return null;
+    }
+
+    public List<Book> findBooksBySection(Section section) {
+        List<Book> booksInSection = new ArrayList<>();
+        for (Book book : booksList.values()) {
+            if (book.getSection() == section) {
+                booksInSection.add(book);
+            }
+        }
+        return booksInSection;
     }
 }

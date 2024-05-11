@@ -64,6 +64,11 @@ public class Book extends LibraryItem {
     @Override
     public String toString() {
         return "Book{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", rating=" + rating +
+                ", itemId=" + itemId +
                 "author=" + author +
                 ", section=" + section +
                 ", publisher=" + publisher +

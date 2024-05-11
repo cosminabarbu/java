@@ -42,6 +42,11 @@ public class Vinyl extends LibraryItem {
     @Override
     public String toString() {
         return "Vinyl{" +
+                "title='" + title + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                ", rating=" + rating +
+                ", itemId=" + itemId +
                 "singer='" + singer + '\'' +
                 ", genre='" + genre + '\'' +
                 ", specialEdition=" + specialEdition +

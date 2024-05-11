@@ -44,14 +44,4 @@ public class Cart {
         this.vinyls = vinyls;
     }
 
-//    @Override
-//    public double getTotal() {
-//        double total = 0;
-//        for (Book book : books) {
-//            total += book.getPrice();
-//        }
-//        double discount = customer.getDiscount();
-//        total *= discount;
-//        return total;
-//    }
 }

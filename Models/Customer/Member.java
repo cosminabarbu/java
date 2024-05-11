@@ -14,9 +14,15 @@ public class Member extends Customer {
     }
 
     @Override
-    public void printDetails() {
-        super.printDetails();
-        System.out.println("Subscription Date: " + subscriptionDate);
+    public String toString() {
+        return "Member{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", customerId=" + customerId +
+                "subscriptionDate=" + subscriptionDate +
+                '}';
     }
 
     @Override

@@ -1,12 +1,12 @@
 package Models.Items;
 
 public class LibraryItem implements Item {
-    private String title;
-    private double price;
-    private int stock;
-    private double rating;
-    private int itemId;
-    private static int nextId = 1;
+    protected String title;
+    protected double price;
+    protected int stock;
+    protected double rating;
+    protected int itemId;
+    protected static int nextId = 1;
 
     public LibraryItem() {
         this.itemId = nextId;

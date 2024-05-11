@@ -11,6 +11,17 @@ public class Regular extends Customer {
     }
 
     @Override
+    public String toString() {
+        return "Regular{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", customerId=" + customerId +
+                '}';
+    }
+
+    @Override
     public double getDiscount() {
         return 1.0;
     }
