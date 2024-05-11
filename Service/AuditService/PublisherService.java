@@ -17,7 +17,7 @@ public class PublisherService {
         this.authorsList = new ArrayList<>();
     }
 
-    public void addPublisher() {
+    public Publisher addPublisher() {
         Scanner scanner = new Scanner(System.in);
         WriteService writeService = new WriteService();
 
@@ -25,8 +25,9 @@ public class PublisherService {
         String name = scanner.nextLine();
         ArrayList<Author> authors = inputAuthors();
         Publisher publisher = new Publisher(name, authors);
-        publisherManagement.add(publisher);
+        Publisher result = publisherManagement.add(publisher);
         writeService.writeAction("added publisher");
+        return result;
     }
 
     // Method to input authors for the publisher

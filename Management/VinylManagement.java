@@ -7,8 +7,10 @@ import java.util.Map;
 public class VinylManagement {
     private Map<Integer, Vinyl> vinylsList = new HashMap<>();
 
-    public void add(Vinyl vinyl) {
+    public Vinyl add(Vinyl vinyl) {
         vinylsList.put(vinyl.getItemId(), vinyl);
+        System.out.println(vinylsList);
+        return vinyl;
     }
 
     public Vinyl get(int vinylId) {

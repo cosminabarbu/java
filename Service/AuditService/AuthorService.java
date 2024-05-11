@@ -11,7 +11,7 @@ public class AuthorService {
         this.authorManagement = new AuthorManagement();
     }
 
-    public void addAuthor(){
+    public Author addAuthor(){
         Scanner scanner = new Scanner(System.in);
         WriteService writeService = new WriteService();
         System.out.println("Enter the name of the author: ");
@@ -24,7 +24,7 @@ public class AuthorService {
         Author result = authorManagement.add(author);
 
         writeService.writeAction("added author");
-//        return result;
+        return result;
 
     }
 

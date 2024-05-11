@@ -9,9 +9,10 @@ import java.util.ListIterator;
 public class PublisherManagement {
     private List<Publisher> publishersList;
 
-    public void add(Publisher publisher){
+    public Publisher add(Publisher publisher){
         this.publishersList.add(publisher);
         System.out.println(publishersList);
+        return publisher;
     }
 
     public void delete(String name){

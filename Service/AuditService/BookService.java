@@ -4,6 +4,7 @@ import Models.Items.Book;
 import Management.BookManagement;
 import Models.Author;
 import Models.Publisher;
+import Models.Section;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class BookService {
         Book book = new Book(title, price, stock, rating, author, section, publisher, pageNo, year);
         bookManagement.add(book);
 
-        writeService.writeAction("added book: " + title);
+        writeService.writeAction("added book" + title);
     }
 
     private Author getAuthorByName(String name) {
@@ -56,8 +57,8 @@ public class BookService {
     }
 
     private Section getSectionByName(String name) {
-        for (Section section : sectionsList) {
-            if (section.getName().equalsIgnoreCase(name)) {
+        for (Section section : Section.values()) {
+            if (section.name().equalsIgnoreCase(name)) {
                 return section;
             }
         }
