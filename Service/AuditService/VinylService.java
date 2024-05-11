@@ -1,8 +1,6 @@
 package Service.AuditService;
 
-import Management.AuthorManagement;
-import Management.PublisherManagement;
-import Management.VinylManagement;
+import Management.Items.VinylManagement;
 import Models.Items.Vinyl;
 
 import java.util.Scanner;
