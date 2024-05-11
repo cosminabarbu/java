@@ -6,8 +6,8 @@ import java.util.Map;
 public class MemberManagement {
     Map<Integer, Member> membersList = new HashMap<>();
 
-    public void add(Member member) {
-        membersList.put(member.getCustomerId(), member);
+    public Member add(Member member) {
+        membersList.put(member.getCustomerId(), member); return member;
     }
 
     public void delete(int memberId) {

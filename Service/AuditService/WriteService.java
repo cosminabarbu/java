@@ -9,10 +9,6 @@ public class WriteService {
     private static final String path  = "Files/Actions.csv";
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public static void main(String[] args) {
-        writeAction("something happened");
-    }
-
     public static void writeAction(String action) {
         try (FileWriter writer = new FileWriter(path, true)){
             long currentTimestamp = System.currentTimeMillis();
