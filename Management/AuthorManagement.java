@@ -9,10 +9,6 @@ import java.util.Iterator;
 public class AuthorManagement {
     private List<Author> authorsList;
 
-//   // private AuthorManagement() {
-//        this.authorsList = new ArrayList<Author>();
-//    }
-
     public Author add(Author author) {
         authorsList.add(author);
         System.out.println(authorsList);
@@ -41,7 +37,6 @@ public class AuthorManagement {
         }
         return null;
     }
-
 
     public void update(String name, Author updatedAuthor){
         ListIterator<Author> iterator = authorsList.listIterator();

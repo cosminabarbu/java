@@ -22,12 +22,11 @@ public class StudentManagement {
         return studentsList.get(studentId);
     }
 
-    public void updateAddress(int studentId, String newAddress) {
-        Student student = studentsList.get(studentId);
+    public void updateAddress(Student student, String newAddress) {
         if (student != null) {
             student.setAddress(newAddress);
         } else {
-            System.out.println("Student with ID " + studentId + " does not exist.");
+            System.out.println("Given student does not exist.");
         }
     }
 }
