@@ -3,6 +3,7 @@ package Management;
 import Models.Author;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Iterator;
 
 public class AuthorManagement {
@@ -14,6 +15,7 @@ public class AuthorManagement {
 
     public Author add(Author author) {
         authorsList.add(author);
+        System.out.println(authorsList);
         return author;
     }
 
@@ -41,12 +43,14 @@ public class AuthorManagement {
     }
 
 
-    public void update(String name){
-        Iterator<Author> iterator = authorsList.iterator();
+    public void update(String name, Author updatedAuthor){
+        ListIterator<Author> iterator = authorsList.listIterator();
         while(iterator.hasNext()){
             Author author = iterator.next();
             if(author.getName().equals(name)){
-                author.setName(name);
+                int index = iterator.previousIndex();
+                iterator.set(updatedAuthor);
+                return;
             }
         }
     }

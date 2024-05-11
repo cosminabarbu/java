@@ -9,6 +9,7 @@ public class BookManagement {
 
     public void add(Book book) {
       booksList.put(book.getItemId(), book);
+      System.out.println(booksList);
     }
 
     public void delete(int bookId){

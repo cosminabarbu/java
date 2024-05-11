@@ -33,16 +33,16 @@ public class AuthorService {
         return author;
     }
 
-    public void updateAuthor(Author author){
-        Scanner scanner = new Scanner(System.in);
+    public void updateAuthor(String name, Author author){
         WriteService writeService = new WriteService();
-        System.out.println("Enter the new nationality of the author: ");
-        String newNationality = scanner.nextLine();
-        writeService.writeAction("updated author nationality");
+        authorManagement.update(name, author);
+        writeService.writeAction("Author updated");
 
     }
 
     public void deleteAuthor(String name){
-
+        WriteService writeService = new WriteService();
+        authorManagement.delete(name);
+        writeService.writeAction("Author deleted");
     }
 }
