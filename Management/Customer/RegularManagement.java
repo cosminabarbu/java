@@ -22,12 +22,11 @@ public class RegularManagement {
         return regularsList.get(regularId);
     }
 
-    public void updateAddress(int regularId, String newAddress) {
-        Regular regular = regularsList.get(regularId);
+    public void updateAddress(Regular regular, String newAddress) {
         if (regular != null) {
             regular.setAddress(newAddress);
         } else {
-            System.out.println("Regular with ID " + regularId + " does not exist.");
+            System.out.println("Given regular does not exist.");
         }
     }
 }

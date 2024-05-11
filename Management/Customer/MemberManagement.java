@@ -22,12 +22,11 @@ public class MemberManagement {
         return membersList.get(memberId);
     }
 
-    public void updateAddress(int memberId, String newAddress) {
-        Member member = membersList.get(memberId);
+    public void updateAddress(Member member, String newAddress) {
         if (member != null) {
             member.setAddress(newAddress);
         } else {
-            System.out.println("Member with ID " + memberId + " does not exist.");
+            System.out.println("Given member does not exist.");
         }
     }
 }
