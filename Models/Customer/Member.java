@@ -13,16 +13,27 @@ public class Member extends Customer {
         this.subscriptionDate = subscriptionDate;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthday=" + birthday +
-                ", address='" + address + '\'' +
-                ", customerId=" + customerId +
-                "subscriptionDate=" + subscriptionDate +
-                '}';
+    public Date getSubscriptionDate() {
+        return subscriptionDate;
+    }
+    public void setSubscriptionDate(Date subscriptionDate) {
+        this.subscriptionDate = subscriptionDate;
+    }
+
+    public void renewMembership() {
+        Date currentDate = new Date();
+        long oneMonthInMillis = 30L * 24 * 60 * 60 * 1000;
+        long newSubscriptionTime = subscriptionDate.getTime() + oneMonthInMillis;
+        subscriptionDate = new Date(newSubscriptionTime);
+        System.out.println("Membership renewed. New expiration date: " + subscriptionDate);
+    }
+
+    public boolean isMembershipExpired(Member member) {
+        Date currentDate = new Date();
+        long diffInMilliseconds = currentDate.getTime() - member.getSubscriptionDate().getTime();
+        long diffInMonths = diffInMilliseconds / (1000L * 60 * 60 * 24 * 30);
+
+        return diffInMonths >= 1; // If membership is expired (over a month old), return true
     }
 
     @Override
@@ -38,5 +49,17 @@ public class Member extends Customer {
         } else {
             return 0.7;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", address='" + address + '\'' +
+                ", customerId=" + customerId +
+                "subscriptionDate=" + subscriptionDate +
+                '}';
     }
 }

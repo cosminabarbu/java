@@ -1,20 +1,25 @@
 package Management;
 
+import Models.Customer.Member;
 import Models.Items.Book;
 import Models.Cart;
 import Models.Customer.Customer;
 import Models.Items.Vinyl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CartManagement {
     private List<Cart> cartsList = new ArrayList<Cart>();
 
     public void addCart(Cart cart) {
-        cartsList.add(cart);
+        if (cart.getCustomer() instanceof Member) {
+            Member member = (Member) cart.getCustomer();
+            if (cart.isMembershipExpired(member)) {
+                System.out.println("Cannot create cart. Membership for member " + member.getCustomerId() + " is expired.");
+                return;
+            }
+        }
+        addCart(cart);
         System.out.println("Cart added: " + cart);
     }
 
