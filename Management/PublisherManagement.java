@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 import java.util.ListIterator;
+import Models.Author;
 
 public class PublisherManagement {
     private List<Publisher> publishersList;
@@ -46,6 +47,26 @@ public class PublisherManagement {
                 iterator.set(updatedPublisher);
                 return;
             }
+        }
+    }
+
+    public void addAuthorToPublisher(Publisher publisher, Author author){
+        if(publishersList.contains(publisher)){
+            publisher.addAuthor(author);
+            System.out.println(author.getName() + " added to publisher " + publisher.getName());
+        }
+        else {
+            System.out.println("Publisher was not found.");
+        }
+    }
+
+    public void removeAuthorFromPublisher(Publisher publisher, Author author){
+        if(publishersList.contains(publisher)){
+            publisher.deleteAuthor(author);
+            System.out.println(author.getName() + " was removed from publisher " + publisher.getName());
+        }
+        else  {
+            System.out.println("Publisher was not found.");
         }
     }
 }

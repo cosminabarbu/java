@@ -1,6 +1,7 @@
 package Service.AuditService.CustomerService;
 
 import Models.Customer.Member;
+import Models.Customer.Regular;
 import Models.Customer.Student;
 import Management.Customer.StudentManagement;
 import Service.AuditService.WriteService;
@@ -54,6 +55,18 @@ public class StudentService {
         studentManagement.delete(studentId);
         writeService.writeAction("deleted student");
         }
+
+    public void updateStudentAddress(int studentId, String newAddress) {
+        WriteService writeService = new WriteService();
+
+        Student student = studentManagement.get(studentId);
+        if (student != null) {
+            studentManagement.updateAddress(student, newAddress);
+            writeService.writeAction("Student address updated");
+        } else {
+            System.out.println("Student with ID " + studentId + " does not exist.");
+        }
+    }
 
     private Date parseDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

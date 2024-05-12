@@ -45,4 +45,10 @@ public class AuthorService {
         authorManagement.delete(name);
         writeService.writeAction("Author deleted");
     }
+
+    public void findAuthorByNationality(String nationality){
+        WriteService writeService = new WriteService();
+        authorManagement.findByNationality(nationality);
+        writeService.writeAction("find author by nationality");
+    }
 }

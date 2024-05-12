@@ -54,4 +54,10 @@ public class VinylService {
         writeService.writeAction("vinyl deleted");
     }
 
+    public void findVinylByTitle(String title){
+        WriteService writeService = new WriteService();
+        vinylManagement.findByTitle(title);
+        writeService.writeAction("find vinyl by title");
+    }
+
 }

@@ -1,5 +1,6 @@
 package Service.AuditService.CustomerService;
 
+import Models.Customer.Member;
 import Models.Customer.Regular;
 import Management.Customer.RegularManagement;
 import Service.AuditService.WriteService;
@@ -47,6 +48,17 @@ public class RegularService {
         writeService.writeAction("deleted customer");
     }
 
+    public void updateCustomerAddress(int customerId, String newAddress) {
+        WriteService writeService = new WriteService();
+
+        Regular regular = regularManagement.get(customerId);
+        if (regular != null) {
+            regularManagement.updateAddress(regular, newAddress);
+            writeService.writeAction("Customer address updated");
+        } else {
+            System.out.println("Customer with ID " + customerId + " does not exist.");
+        }
+    }
 
     private Date parseDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
