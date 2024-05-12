@@ -6,8 +6,9 @@ import java.util.Map;
 public class RegularManagement {
     Map<Integer, Regular> regularsList = new HashMap<>();
 
-    public void add(Regular regular) {
+    public Regular add(Regular regular) {
         regularsList.put(regular.getCustomerId(), regular);
+        return regular;
     }
 
     public void delete(int regularId) {

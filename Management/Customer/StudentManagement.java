@@ -6,8 +6,9 @@ import java.util.Map;
 public class StudentManagement {
     Map<Integer, Student> studentsList = new HashMap<>();
 
-    public void add(Student student) {
+    public Student add(Student student) {
         studentsList.put(student.getCustomerId(), student);
+        return student;
     }
 
     public void delete(int studentId) {
