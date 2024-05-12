@@ -33,6 +33,14 @@ public class Publisher {
         this.authors = authors;
     }
 
+    public void addAuthor(Author author) {
+        authors.add(author);
+    }
+
+    public void deleteAuthor(Author author) {
+        authors.remove(author);
+    }
+
     @Override
     public String toString() {
         return "Publisher{" +
@@ -41,7 +49,5 @@ public class Publisher {
                 '}';
     }
 
-    public void addAuthor(Author author) {
-        authors.add(author);
-    }
+
 }

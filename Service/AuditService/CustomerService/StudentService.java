@@ -1,6 +1,7 @@
 package Service.AuditService.CustomerService;
 
 import Models.Customer.Member;
+import Models.Customer.Regular;
 import Models.Customer.Student;
 import Management.Customer.StudentManagement;
 import Service.AuditService.WriteService;
@@ -31,8 +32,6 @@ public class StudentService {
 
         System.out.println("Enter the address of the student: ");
         String address = scanner.nextLine();
-//        System.out.println("Enter the customer ID: ");
-//        int customerId = scanner.nextInt();
         scanner.nextLine(); // Consumăm newline-ul rămas
         System.out.println("Enter the student ID: ");
         int studentId = scanner.nextInt();
@@ -44,6 +43,29 @@ public class StudentService {
         writeService.writeAction("added student");
         return result;
 
+    }
+
+        public Student getStudent(int studentId) {
+        return studentManagement.get(studentId);
+        }
+
+        public void deleteStudent(int studentId) {
+        WriteService writeService = new WriteService();
+
+        studentManagement.delete(studentId);
+        writeService.writeAction("deleted student");
+        }
+
+    public void updateStudentAddress(int studentId, String newAddress) {
+        WriteService writeService = new WriteService();
+
+        Student student = studentManagement.get(studentId);
+        if (student != null) {
+            studentManagement.updateAddress(student, newAddress);
+            writeService.writeAction("Student address updated");
+        } else {
+            System.out.println("Student with ID " + studentId + " does not exist.");
+        }
     }
 
     private Date parseDate(String dateStr) {

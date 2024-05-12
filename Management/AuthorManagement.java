@@ -31,7 +31,7 @@ public class AuthorManagement {
         Iterator<Author> iterator = authorsList.iterator();
         while(iterator.hasNext()){
             Author author = iterator.next();
-            if(author.getName().equals(name)){
+            if(author.getName().toLowerCase().equals(name.toLowerCase())){
                 return author;
             }
         }
@@ -49,6 +49,15 @@ public class AuthorManagement {
         }
     }
 
+    public Author findByNationality(String nationality) {
+        for(Author author : authorsList){
+            if(author.getNationality().toLowerCase().contains(nationality.toLowerCase())) {
+                return author;
+            }
+        }
+        System.out.println("No "  + nationality + " author was not found");
+        return null;
+    }
 
 
 }

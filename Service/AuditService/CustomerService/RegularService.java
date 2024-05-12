@@ -1,5 +1,6 @@
 package Service.AuditService.CustomerService;
 
+import Models.Customer.Member;
 import Models.Customer.Regular;
 import Management.Customer.RegularManagement;
 import Service.AuditService.WriteService;
@@ -29,27 +30,35 @@ public class RegularService {
 
         System.out.println("Enter the address of the customer: ");
         String address = scanner.nextLine();
-        System.out.println("Enter the customer ID: ");
-        int customerId = scanner.nextInt();
         scanner.nextLine(); // Consumăm newline-ul rămas
-
         Regular regular = new Regular(firstName, lastName, birthday, address);
         Regular result = regularManagement.add(regular);
         writeService.writeAction("added student");
         return result;
     }
 
-    public Regular getCustomer(int regularId) {
-        return regularManagement.get(regularId);
+    public Regular getCustomer(int customerId) {
+        return regularManagement.get(customerId);
     }
 
-    public void delete(int regularId) {
+    public void delete(int customerId) {
         WriteService writeService = new WriteService();
 
-        regularManagement.delete(regularId);
+        regularManagement.delete(customerId);
         writeService.writeAction("deleted customer");
     }
 
+    public void updateCustomerAddress(int customerId, String newAddress) {
+        WriteService writeService = new WriteService();
+
+        Regular regular = regularManagement.get(customerId);
+        if (regular != null) {
+            regularManagement.updateAddress(regular, newAddress);
+            writeService.writeAction("Customer address updated");
+        } else {
+            System.out.println("Customer with ID " + customerId + " does not exist.");
+        }
+    }
 
     private Date parseDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
