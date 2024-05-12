@@ -2,6 +2,7 @@ package Management.Items;
 
 import Models.Items.Book;
 import Models.Section;
+import Models.Author;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,4 +65,25 @@ public class BookManagement {
         }
         return booksInSection;
     }
-}
+
+        public Author findAuthorWithMostBooks(List<Book> books) {
+            Map<Author, Integer> authorBookCount = new HashMap<>();
+            for (Book book : books) {
+                Author author = book.getAuthor();
+                authorBookCount.put(author, authorBookCount.getOrDefault(author, 0) + 1);
+            }
+
+            Author authorWithMostBooks = null;
+            int maxBooks = 0;
+
+            for (Map.Entry<Author, Integer> entry : authorBookCount.entrySet()) {
+                if (entry.getValue() > maxBooks) {
+                    maxBooks = entry.getValue();
+                    authorWithMostBooks = entry.getKey();
+                }
+            }
+
+            return authorWithMostBooks;
+        }
+    }
+

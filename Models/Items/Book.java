@@ -61,6 +61,8 @@ public class Book extends LibraryItem {
         this.year = year;
     }
 
+    public Author findAuthorWithMostBooks(){ return author;}
+
     @Override
     public String toString() {
         return "Book{" +
