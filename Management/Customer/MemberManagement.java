@@ -2,6 +2,7 @@ package Management.Customer;
 import Models.Customer.Member;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class MemberManagement {
     Map<Integer, Member> membersList = new HashMap<>();
@@ -29,4 +30,27 @@ public class MemberManagement {
             System.out.println("Given member does not exist.");
         }
     }
+
+
+    public void checkAndRenewMembership(int memberId) {
+        Member member = membersList.get(memberId);
+        if (member != null) {
+            if (member.isMembershipExpired(member)) {
+                System.out.println("Your membership is expired.");
+                System.out.println("Would you like to renew your membership? (yes/no)");
+                Scanner scanner = new Scanner(System.in);
+                String response = scanner.nextLine();
+                if (response.equalsIgnoreCase("yes")) {
+                    member.renewMembership();
+                } else {
+                    System.out.println("Membership renewal declined.");
+                }
+            } else {
+                System.out.println("Your membership is still valid.");
+            }
+        } else {
+            System.out.println("Member with ID " + memberId + " does not exist.");
+        }
+    }
+
 }

@@ -1,9 +1,11 @@
 package Models;
 import Models.Customer.Customer;
+import Models.Customer.Member;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Cart {
@@ -22,6 +24,19 @@ public class Cart {
         this.vinyls = new ArrayList<>(vinyls);
         updateBookStock();
         updateVinylStock();
+    }
+
+    public Cart(Member customer, List<Book> books, List<Vinyl> vinyls) {
+        this.customer = customer;
+        this.books = new ArrayList<>(books);
+        this.vinyls = new ArrayList<>(vinyls);
+
+        if (customer.isMembershipExpired(customer)) {
+            System.out.println("Cannot create cart. Membership is expired.");
+        } else {
+            updateBookStock();
+            updateVinylStock();
+        }
     }
 
     private void updateBookStock() {
