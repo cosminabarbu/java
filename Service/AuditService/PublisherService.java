@@ -77,4 +77,16 @@ public class PublisherService {
         publisherManagement.delete(name);
         writeService.writeAction("Publisher deleted: " + name);
     }
+
+    public void addAuthorToPublisher(Publisher publisher, Author author) {
+        WriteService writeService = new WriteService();
+        publisherManagement.addAuthorToPublisher(publisher, author);
+        writeService.writeAction("Author added.");
+    }
+
+    public void removeAuthorFromPublisher(Publisher publisher, Author author) {
+        WriteService writeService = new WriteService();
+        publisherManagement.removeAuthorFromPublisher(publisher, author);
+        writeService.writeAction("Author removed.");
+    }
 }

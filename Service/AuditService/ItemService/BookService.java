@@ -9,6 +9,7 @@ import Service.AuditService.WriteService;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookService {
     private BookManagement bookManagement;
@@ -89,5 +90,12 @@ public class BookService {
         WriteService writeService = new WriteService();
         bookManagement.delete(bookId);
         writeService.writeAction("Book deleted with id: " + bookId);
+    }
+
+    public Author findAuthorWithMostBooks(List<Book> books){
+        WriteService writeService = new WriteService();
+        Author authorSearched =  bookManagement.findAuthorWithMostBooks(books);
+        writeService.writeAction("Author with most books found");
+        return authorSearched;
     }
 }

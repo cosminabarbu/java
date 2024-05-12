@@ -12,9 +12,10 @@ import java.util.Map;
 public class BookManagement {
     private Map<Integer, Book> booksList = new HashMap<>();
 
-    public void add(Book book) {
+    public Book add(Book book) {
       booksList.put(book.getItemId(), book);
       System.out.println(booksList);
+      return book;
     }
 
     public void delete(int bookId){
