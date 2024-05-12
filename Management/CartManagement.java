@@ -13,7 +13,27 @@ import java.util.Map;
 public class CartManagement {
     private List<Cart> cartsList = new ArrayList<Cart>();
 
+    public void addCart(Cart cart) {
+        cartsList.add(cart);
+        System.out.println("Cart added: " + cart);
+    }
 
+    public void deleteCart(Cart cart) {
+        if (cartsList.remove(cart)) {
+            System.out.println("Cart removed: " + cart);
+        } else {
+            System.out.println("Cart not found.");
+        }
+    }
+
+    public Cart getCart(int index) {
+        if (index >= 0 && index < cartsList.size()) {
+            return cartsList.get(index);
+        } else {
+            System.out.println("Invalid index.");
+            return null;
+        }
+    }
 
     public double getTotal(int cartIndex) {
         if (cartIndex < 0 || cartIndex >= cartsList.size()) {
@@ -29,6 +49,48 @@ public class CartManagement {
         double discount = cart.getCustomer().getDiscount();
         total *= discount;
         return total;
+    }
+
+    public void addBookToCart(Cart cart, Book book) {
+        if (cartsList.contains(cart)) {
+            cart.addBook(book);
+            System.out.println(book.getTitle() + " added to cart.");
+        } else {
+            System.out.println("Cart not found.");
+        }
+    }
+
+    public void addVinylToCart(Cart cart, Vinyl vinyl) {
+        if (cartsList.contains(cart)) {
+            cart.addVinyl(vinyl);
+            System.out.println(vinyl.getTitle() + " added to cart.");
+        } else {
+            System.out.println("Cart not found.");
+        }
+    }
+
+    public void deleteBookFromCart(Cart cart, Book book) {
+        if (cartsList.contains(cart)) {
+            if (cart.deleteBook(book)) {
+                System.out.println(book.getTitle() + " removed from cart.");
+            } else {
+                System.out.println("Book not found in cart.");
+            }
+        } else {
+            System.out.println("Cart not found.");
+        }
+    }
+
+    public void deleteVinylFromCart(Cart cart, Vinyl vinyl) {
+        if (cartsList.contains(cart)) {
+            if (cart.deleteVinyl(vinyl)) {
+                System.out.println(vinyl.getTitle() + " removed from cart.");
+            } else {
+                System.out.println("Vinyl not found in cart.");
+            }
+        } else {
+            System.out.println("Cart not found.");
+        }
     }
 
     public List<Book> bestsellerBooks() {
@@ -82,7 +144,7 @@ public class CartManagement {
 
         Cart cart = cartsList.get(cartIndex);
         Customer customer = cart.getCustomer();
-        customer.printDetails();
+        System.out.println(customer);
 
         List<Book> books = cart.getBooks();
         System.out.println("Books in Cart:");

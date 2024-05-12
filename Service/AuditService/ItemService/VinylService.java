@@ -1,6 +1,6 @@
 package Service.AuditService.ItemService;
 
-import Management.VinylManagement;
+import Management.Items.VinylManagement;
 import Models.Items.Vinyl;
 import Service.AuditService.WriteService;
 

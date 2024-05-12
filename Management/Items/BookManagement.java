@@ -1,4 +1,4 @@
-package Management;
+package Management.Items;
 
 import Models.Items.Book;
 import Models.Section;
@@ -55,7 +55,7 @@ public class BookManagement {
         return null;
     }
 
-    public List<Book> findBooksBySection(Section section) {
+    public List<Book> findBySection(Section section) {
         List<Book> booksInSection = new ArrayList<>();
         for (Book book : booksList.values()) {
             if (book.getSection() == section) {

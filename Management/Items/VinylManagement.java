@@ -1,8 +1,10 @@
-package Management;
+package Management.Items;
 
 import Models.Items.Vinyl;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VinylManagement {
     private Map<Integer, Vinyl> vinylsList = new HashMap<>();
@@ -41,4 +43,35 @@ public class VinylManagement {
         }
     }
 
+    public Vinyl findByTitle(String title) {
+        for (Vinyl vinyl : vinylsList.values()) {
+            if (vinyl.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                System.out.println("Vinyl with title containing \"" + title + "\" found");
+                return vinyl;
+            }
+        }
+        System.out.println("Vinyl with title containing \"" + title + "\" was not found");
+        return null;
+    }
+
+    public List<Vinyl> findByGenre(String genre) {
+        List<Vinyl> foundVinyls = new ArrayList<>();
+
+        for (Vinyl vinyl : vinylsList.values()) {
+            if (vinyl.getGenre().toLowerCase().contains(genre.toLowerCase())) {
+                foundVinyls.add(vinyl);
+            }
+        }
+
+        if (!foundVinyls.isEmpty()) {
+            System.out.println("Vinyls with genre containing \"" + genre + "\" found:");
+            for (Vinyl foundVinyl : foundVinyls) {
+                System.out.println(foundVinyl);
+            }
+        } else {
+            System.out.println("No vinyls with genre containing \"" + genre + "\" found");
+        }
+
+        return foundVinyls;
+    }
 }
