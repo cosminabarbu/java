@@ -1,7 +1,7 @@
 package Service.AuditService.ItemService;
 
 import Models.Items.Book;
-import Management.BookManagement;
+import Management.Items.BookManagement;
 import Models.Author;
 import Models.Publisher;
 import Models.Section;
