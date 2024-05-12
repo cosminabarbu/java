@@ -29,24 +29,21 @@ public class RegularService {
 
         System.out.println("Enter the address of the customer: ");
         String address = scanner.nextLine();
-        System.out.println("Enter the customer ID: ");
-        int customerId = scanner.nextInt();
         scanner.nextLine(); // Consumăm newline-ul rămas
-
         Regular regular = new Regular(firstName, lastName, birthday, address);
         Regular result = regularManagement.add(regular);
         writeService.writeAction("added student");
         return result;
     }
 
-    public Regular getCustomer(int regularId) {
-        return regularManagement.get(regularId);
+    public Regular getCustomer(int customerId) {
+        return regularManagement.get(customerId);
     }
 
-    public void delete(int regularId) {
+    public void delete(int customerId) {
         WriteService writeService = new WriteService();
 
-        regularManagement.delete(regularId);
+        regularManagement.delete(customerId);
         writeService.writeAction("deleted customer");
     }
 

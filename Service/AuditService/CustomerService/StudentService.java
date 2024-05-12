@@ -31,8 +31,6 @@ public class StudentService {
 
         System.out.println("Enter the address of the student: ");
         String address = scanner.nextLine();
-//        System.out.println("Enter the customer ID: ");
-//        int customerId = scanner.nextInt();
         scanner.nextLine(); // Consumăm newline-ul rămas
         System.out.println("Enter the student ID: ");
         int studentId = scanner.nextInt();
@@ -45,6 +43,17 @@ public class StudentService {
         return result;
 
     }
+
+        public Student getStudent(int studentId) {
+        return studentManagement.get(studentId);
+        }
+
+        public void deleteStudent(int studentId) {
+        WriteService writeService = new WriteService();
+
+        studentManagement.delete(studentId);
+        writeService.writeAction("deleted student");
+        }
 
     private Date parseDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
