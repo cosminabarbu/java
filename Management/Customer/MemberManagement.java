@@ -1,5 +1,7 @@
 package Management.Customer;
 import Models.Customer.Member;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -23,7 +25,9 @@ public class MemberManagement {
         return membersList.get(memberId);
     }
 
-    
+    public Map<Integer, Member> getAll(){
+        return membersList;
+    }
 
     public void updateAddress(Member member, String newAddress) {
         if (member != null) {

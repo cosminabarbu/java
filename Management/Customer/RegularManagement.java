@@ -1,4 +1,5 @@
 package Management.Customer;
+import Models.Customer.Member;
 import Models.Customer.Regular;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,10 @@ public class RegularManagement {
 
     public Regular get(int regularId) {
         return regularsList.get(regularId);
+    }
+
+    public Map<Integer, Regular> getAll(){
+        return regularsList;
     }
 
     public void updateAddress(Regular regular, String newAddress) {

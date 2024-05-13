@@ -1,4 +1,5 @@
 package Management.Customer;
+import Models.Customer.Member;
 import Models.Customer.Student;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,6 +22,10 @@ public class StudentManagement {
 
     public Student get(int studentId) {
         return studentsList.get(studentId);
+    }
+
+    public Map<Integer, Student> getAll(){
+        return studentsList;
     }
 
     public void updateAddress(Student student, String newAddress) {

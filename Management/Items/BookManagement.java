@@ -1,5 +1,6 @@
 package Management.Items;
 
+import Models.Customer.Member;
 import Models.Items.Book;
 import Models.Section;
 import Models.Author;
@@ -45,6 +46,10 @@ public class BookManagement {
             System.out.println("Book with id" + bookId + " was not found");
             return null;
         }
+    }
+
+    public Map<Integer, Book> getAll(){
+        return booksList;
     }
 
     public void update(int bookId, Book updatedBook){

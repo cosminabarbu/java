@@ -1,5 +1,6 @@
 package Management.Items;
 
+import Models.Customer.Member;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 import java.util.HashMap;
@@ -34,6 +35,10 @@ public class VinylManagement {
             System.out.println("Vinyl with id " + vinylId + " was not found");
             return null;
         }
+    }
+
+    public Map<Integer, Vinyl> getAll(){
+        return vinylsList;
     }
 
     public void delete(int vinylId) {
