@@ -1,5 +1,6 @@
 package Management.Items;
 
+import Models.Items.Book;
 import Models.Items.Vinyl;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +9,16 @@ import java.util.List;
 
 public class VinylManagement {
     private Map<Integer, Vinyl> vinylsList = new HashMap<>();
+
+    public VinylManagement() {
+        this.vinylsList = new HashMap<>();
+    }
+
+    public void loadVinylsFromCSV(List<Vinyl> vinyls) {
+        for (Vinyl vinyl : vinyls) {
+            this.vinylsList.put(vinyl.getItemId(), vinyl);
+        }
+    }
 
     public Vinyl add(Vinyl vinyl) {
         vinylsList.put(vinyl.getItemId(), vinyl);

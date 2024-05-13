@@ -1,20 +1,57 @@
 package Service.AuditService;
 
+import Management.AuthorManagement;
 import Models.Author;
 import Models.Publisher;
 import Management.PublisherManagement;
-//import Service.AuditService.WriteService;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class PublisherService {
     private PublisherManagement publisherManagement;
     private ArrayList<Author> authorsList;
+    private AuthorManagement authorManagement = new AuthorManagement();
 
     public PublisherService() {
         this.publisherManagement = new PublisherManagement();
         this.authorsList = new ArrayList<>();
+    }
+
+    public List<Publisher> readPublishersFromCSV(String filePath) {
+        List<Publisher> publishers = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                String publisherName = parts[0];
+
+                Publisher publisher = new Publisher(publisherName, new ArrayList<>());
+
+                for (int i = 1; i < parts.length; i++) {
+                    String authorName = parts[i];
+                    Author author = authorManagement.get(authorName);
+
+                    if (author != null) {
+                        publisher.addAuthor(author);
+                    } else {
+                        System.out.println("Author not found for publisher " + publisherName + ": " + authorName);
+                    }
+                }
+
+                publishers.add(publisher);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        publisherManagement.loadPublishersFromCSV(publishers);
+        return publishers;
     }
 
     public Publisher addPublisher() {
@@ -37,7 +74,7 @@ public class PublisherService {
 
         System.out.println("Enter the number of authors for this publisher:");
         int numAuthors = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         for (int i = 0; i < numAuthors; i++) {
             System.out.println("Enter author " + (i + 1) + " name:");

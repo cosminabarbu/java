@@ -12,6 +12,16 @@ import java.util.Map;
 public class BookManagement {
     private Map<Integer, Book> booksList = new HashMap<>();
 
+    public BookManagement() {
+        this.booksList = new HashMap<>();
+    }
+
+    public void loadBooksFromCSV(List<Book> books) {
+        for (Book book : books) {
+            this.booksList.put(book.getItemId(), book);
+        }
+    }
+
     public Book add(Book book) {
       booksList.put(book.getItemId(), book);
       System.out.println(booksList);
