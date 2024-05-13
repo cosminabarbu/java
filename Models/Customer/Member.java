@@ -59,7 +59,7 @@ public class Member extends Customer {
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
                 ", customerId=" + customerId +
-                "subscriptionDate=" + subscriptionDate +
+                ", subscriptionDate=" + subscriptionDate +
                 '}';
     }
 }

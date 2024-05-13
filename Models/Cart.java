@@ -1,6 +1,7 @@
 package Models;
 import Models.Customer.Customer;
 import Models.Customer.Member;
+import Models.Customer.Regular;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 
@@ -113,5 +114,14 @@ public class Cart {
             System.out.println("Vinyl not found in cart.");
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "customer=" + customer +
+                ", books=" + books +
+                ", vinyls=" + vinyls +
+                '}';
     }
 }

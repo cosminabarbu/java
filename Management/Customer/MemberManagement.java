@@ -23,6 +23,8 @@ public class MemberManagement {
         return membersList.get(memberId);
     }
 
+    
+
     public void updateAddress(Member member, String newAddress) {
         if (member != null) {
             member.setAddress(newAddress);
