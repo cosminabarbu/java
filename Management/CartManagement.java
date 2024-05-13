@@ -14,7 +14,7 @@ public class CartManagement {
     public void addCart(Cart cart) {
         if (cart.getCustomer() instanceof Member) {
             Member member = (Member) cart.getCustomer();
-            if (cart.isMembershipExpired(member)) {
+            if (member.isMembershipExpired(member)) {
                 System.out.println("Cannot create cart. Membership for member " + member.getCustomerId() + " is expired.");
                 return;
             }
