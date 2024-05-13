@@ -10,6 +10,16 @@ import Models.Author;
 public class PublisherManagement {
     private List<Publisher> publishersList;
 
+    public PublisherManagement() {
+        this.publishersList = new ArrayList<>();
+    }
+
+    public void loadPublishersFromCSV(List<Publisher> publishers ) {
+        for(Publisher publisher : publishers) {
+            this.publishersList.add(publisher);
+        }
+    }
+
     public Publisher add(Publisher publisher){
         this.publishersList.add(publisher);
         System.out.println(publishersList);

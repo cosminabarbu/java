@@ -2,6 +2,12 @@ package Service.AuditService;
 
 import Models.Author;
 import Management.AuthorManagement;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AuthorService {
@@ -9,6 +15,29 @@ public class AuthorService {
 
     public AuthorService() {
         this.authorManagement = new AuthorManagement();
+    }
+
+
+    public List<Author> readAuthorsFromCSV(String filePath) {
+        List<Author> authors = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                String name = parts[0];
+                String nationality = parts[1];
+                Integer birthyear = Integer.parseInt(parts[2]);
+
+                Author author = new Author(name, nationality, birthyear);
+                authors.add(author);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        authorManagement.loadAuthorsFromCSV(authors);
+        return authors;
     }
 
     public Author addAuthor(){
@@ -23,7 +52,7 @@ public class AuthorService {
         Author author = new Author(name, nationality, birthYear);
         Author result = authorManagement.add(author);
 
-        writeService.writeAction("added author");
+        writeService.writeAction("Author added");
         return result;
 
     }
@@ -49,6 +78,6 @@ public class AuthorService {
     public void findAuthorByNationality(String nationality){
         WriteService writeService = new WriteService();
         authorManagement.findByNationality(nationality);
-        writeService.writeAction("find author by nationality");
+        writeService.writeAction("Authors searched by nationality");
     }
 }

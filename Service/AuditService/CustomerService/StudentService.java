@@ -28,11 +28,11 @@ public class StudentService {
         String lastName = scanner.nextLine();
         System.out.println("Enter the birthday of the student (YYYY-MM-DD): ");
         String birthdayStr = scanner.nextLine();
-        Date birthday = parseDate(birthdayStr); // Conversia string-ului la Date
+        Date birthday = parseDate(birthdayStr);
 
         System.out.println("Enter the address of the student: ");
         String address = scanner.nextLine();
-        scanner.nextLine(); // Consumăm newline-ul rămas
+        scanner.nextLine();
         System.out.println("Enter the student ID: ");
         int studentId = scanner.nextInt();
         System.out.println("Enter the student's university name : ");

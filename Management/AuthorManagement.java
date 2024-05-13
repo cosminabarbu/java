@@ -1,6 +1,8 @@
 package Management;
 
 import Models.Author;
+import Service.AuditService.AuthorService;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -8,6 +10,16 @@ import java.util.Iterator;
 
 public class AuthorManagement {
     private List<Author> authorsList;
+
+    public AuthorManagement() {
+        this.authorsList = new ArrayList<>();
+    }
+
+    public void loadAuthorsFromCSV(List<Author> authors ) {
+        for(Author author : authors) {
+            this.authorsList.add(author);
+        }
+    }
 
     public Author add(Author author) {
         authorsList.add(author);
@@ -52,7 +64,9 @@ public class AuthorManagement {
     public Author findByNationality(String nationality) {
         for(Author author : authorsList){
             if(author.getNationality().toLowerCase().contains(nationality.toLowerCase())) {
+                System.out.println(author);
                 return author;
+
             }
         }
         System.out.println("No "  + nationality + " author was not found");

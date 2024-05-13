@@ -26,11 +26,11 @@ public class RegularService {
         String lastName = scanner.nextLine();
         System.out.println("Enter the birthday of the customer (YYYY-MM-DD): ");
         String birthdayStr = scanner.nextLine();
-        Date birthday = parseDate(birthdayStr); // Conversia string-ului la Date
+        Date birthday = parseDate(birthdayStr);
 
         System.out.println("Enter the address of the customer: ");
         String address = scanner.nextLine();
-        scanner.nextLine(); // Consumăm newline-ul rămas
+        scanner.nextLine();
         Regular regular = new Regular(firstName, lastName, birthday, address);
         Regular result = regularManagement.add(regular);
         writeService.writeAction("added student");
