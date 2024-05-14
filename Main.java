@@ -9,11 +9,25 @@ import Service.AuditService.AuthorService;
 import java.util.ArrayList;
 import java.util.List;
 import Models.Customer.Customer;
+import Service.AuditService.CartService;
+import Service.AuditService.CustomerService.MemberService;
+import Service.AuditService.CustomerService.RegularService;
+import Service.AuditService.CustomerService.StudentService;
+import Service.AuditService.ItemService.BookService;
+import Service.AuditService.ItemService.VinylService;
+import Service.AuditService.PublisherService;
 
 public class Main {
     public static void main(String[] args) {
 
         AuthorService authorService = AuthorService.getInstance();
+        BookService bookService = BookService.getInstance();
+        PublisherService publisherService = PublisherService.getInstance();
+        VinylService vinylService = VinylService.getInstance();
+        MemberService memberService = MemberService.getInstance();
+        RegularService regularService = RegularService.getInstance();
+        StudentService studentService = StudentService.getInstance();
+        CartService cartService = CartService.getInstance();
 
 
 
