@@ -55,12 +55,12 @@ public class AuthorManagement {
         ListIterator<Author> iterator = authorsList.listIterator();
         while(iterator.hasNext()){
             Author author = iterator.next();
-            if(author.getName().equals(name)){
+            if(author.getName().toLowerCase().equals(name.toLowerCase())){
                 iterator.set(updatedAuthor);
                 return;
             }
         }
-        System.out.println("Author" + name + "was not found");
+        System.out.println("Author " + name + " was not found");
     }
 
     public List<Author> findByNationality(String nationality) {
