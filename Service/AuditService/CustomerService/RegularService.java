@@ -11,9 +11,21 @@ import java.util.Scanner;
 
 public class RegularService {
     private RegularManagement regularManagement;
+    private static RegularService instance;
 
-    public RegularService() {
+    private RegularService() {
         this.regularManagement = new RegularManagement();
+    }
+
+    public static RegularService getInstance() {
+        if (instance == null) {
+            synchronized (RegularService.class) {
+                if (instance == null) {
+                    instance = new RegularService();
+                }
+            }
+        }
+        return instance;
     }
 
     public Regular addCustomer() {

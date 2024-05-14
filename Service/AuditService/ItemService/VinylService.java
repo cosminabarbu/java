@@ -13,9 +13,21 @@ import java.util.Scanner;
 
 public class VinylService {
     private VinylManagement vinylManagement;
+    private static VinylService instance;
 
-    public VinylService() {
+    private VinylService() {
         vinylManagement = new VinylManagement();
+    }
+
+    public static VinylService getInstance() {
+        if (instance == null) {
+            synchronized (VinylService.class) {
+                if (instance == null) {
+                    instance = new VinylService();
+                }
+            }
+        }
+        return instance;
     }
 
     public List<Vinyl> readVinylsFromCSV(String filePath) {

@@ -13,9 +13,21 @@ import java.util.Scanner;
 
 public class StudentService {
     private StudentManagement studentManagement;
+    private static StudentService instance;
 
-    public StudentService() {
+    private StudentService() {
         this.studentManagement = new StudentManagement();
+    }
+
+    public static StudentService getInstance() {
+        if (instance == null) {
+            synchronized (StudentService.class) {
+                if (instance == null) {
+                    instance = new StudentService();
+                }
+            }
+        }
+        return instance;
     }
 
     public Student addStudent() {

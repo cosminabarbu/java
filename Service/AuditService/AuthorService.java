@@ -14,7 +14,7 @@ public class AuthorService {
     private AuthorManagement authorManagement;
     private static AuthorService instance;
 
-    public AuthorService() {
+    private AuthorService() {
         this.authorManagement = new AuthorManagement();
     }
 

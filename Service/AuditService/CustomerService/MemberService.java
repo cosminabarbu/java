@@ -10,9 +10,21 @@ import java.util.Scanner;
 
 public class MemberService {
     private MemberManagement memberManagement;
+    private static MemberService instance;
 
-    public MemberService() {
+    private MemberService() {
         this.memberManagement = new MemberManagement();
+    }
+
+    public static MemberService getInstance() {
+        if (instance == null) {
+            synchronized (MemberService.class) {
+                if (instance == null) {
+                    instance = new MemberService();
+                }
+            }
+        }
+        return instance;
     }
 
     public Member addMember() {
