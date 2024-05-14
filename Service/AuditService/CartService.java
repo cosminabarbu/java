@@ -29,11 +29,22 @@ public class CartService {
     private Map<Integer, Vinyl> vinyls;
     private BookManagement bookManagement;
     private VinylManagement vinylManagement;
+    private static CartService instance;
 
-
-    public CartService() {
+    private CartService() {
         this.cartManagement = new CartManagement();
         this.memberManagement = new MemberManagement();
+    }
+
+    public static CartService getInstance() {
+        if (instance == null) {
+            synchronized (CartService.class) {
+                if (instance == null) {
+                    instance = new CartService();
+                }
+            }
+        }
+        return instance;
     }
 
     public Cart addCart() {

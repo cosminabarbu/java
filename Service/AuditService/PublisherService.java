@@ -16,10 +16,22 @@ public class PublisherService {
     private PublisherManagement publisherManagement;
     private ArrayList<Author> authorsList;
     private AuthorManagement authorManagement = new AuthorManagement();
+    private static PublisherService instance;
 
-    public PublisherService() {
+    private PublisherService() {
         this.publisherManagement = new PublisherManagement();
         this.authorsList = new ArrayList<>();
+    }
+
+    public static PublisherService getInstance() {
+        if (instance == null) {
+            synchronized (PublisherService.class) {
+                if (instance == null) {
+                    instance = new PublisherService();
+                }
+            }
+        }
+        return instance;
     }
 
     public List<Publisher> readPublishersFromCSV(String filePath) {

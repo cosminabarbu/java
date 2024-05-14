@@ -22,9 +22,21 @@ public class BookService {
     private ArrayList<Publisher> publishersList;
     private AuthorManagement authorManagement = new AuthorManagement();
     private PublisherManagement publisherManagement = new PublisherManagement();
+    private static BookService instance;
 
-    public BookService() {
+    private BookService() {
         this.bookManagement = new BookManagement();
+    }
+
+    public static BookService getInstance() {
+        if (instance == null) {
+            synchronized (BookService.class) {
+                if (instance == null) {
+                    instance = new BookService();
+                }
+            }
+        }
+        return instance;
     }
 
     public List<Book> readBooksFromCSV(String filePath) {

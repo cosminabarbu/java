@@ -28,6 +28,7 @@ public class AuthorService {
         }
         return instance;
     }
+
     public List<Author> readAuthorsFromCSV(String filePath) {
         List<Author> authors = new ArrayList<>();
 
