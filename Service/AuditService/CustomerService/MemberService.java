@@ -65,6 +65,19 @@ public class MemberService {
         writeService.writeAction("Member deleted");
     }
 
+    public void checkAndRenewMembership(int memberId) {
+        WriteService writeService = new WriteService();
+        Member member = memberManagement.get(memberId);
+        if (member != null) {
+            memberManagement.checkAndRenewMembership(memberId);
+        } else {
+            System.out.println("Member with ID " + memberId + " does not exist.");
+        }
+        writeService.writeAction("Member renewed");
+    }
+
+
+
     private Date parseDate(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -74,4 +87,5 @@ public class MemberService {
             return null;
         }
     }
+
 }

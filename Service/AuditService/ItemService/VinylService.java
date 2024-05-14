@@ -85,10 +85,18 @@ public class VinylService {
         writeService.writeAction("vinyl deleted");
     }
 
-    public void findVinylByTitle(String title){
+    public List<Vinyl> findVinylByTitle(String title){
         WriteService writeService = new WriteService();
-        vinylManagement.findByTitle(title);
+        List<Vinyl> titleVynils = vinylManagement.findByTitle(title);
         writeService.writeAction("find vinyl by title");
+        return titleVynils;
+    }
+
+    public List<Vinyl> findVinylByGenre(String genre){
+        WriteService writeService = new WriteService();
+        List<Vinyl> genreVynils = vinylManagement.findByGenre(genre);
+        writeService.writeAction("find vinyl by genre");
+        return genreVynils;
     }
 
 }

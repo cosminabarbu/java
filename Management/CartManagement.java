@@ -12,16 +12,17 @@ import java.util.*;
 public class CartManagement {
     private List<Cart> cartsList = new ArrayList<Cart>();
 
-    public void addCart(Cart cart) {
+    public Cart addCart(Cart cart) {
         if (cart.getCustomer() instanceof Member) {
             Member member = (Member) cart.getCustomer();
             if (member.isMembershipExpired(member)) {
                 System.out.println("Cannot create cart. Membership for member " + member.getCustomerId() + " is expired.");
-                return;
+                return null;
             }
         }
         addCart(cart);
         System.out.println("Cart added: " + cart);
+        return cart;
     }
 
     public void deleteCart(Cart cart) {
@@ -52,6 +53,11 @@ public class CartManagement {
         for (Book book : cart.getBooks()) {
             total += book.getPrice();
         }
+
+        for (Vinyl vinyl : cart.getVinyls()) {
+            total += vinyl.getPrice();
+        }
+
         double discount = cart.getCustomer().getDiscount();
         total *= discount;
         return total;
@@ -142,20 +148,4 @@ public class CartManagement {
         return bestsellers;
     }
 
-    public void printCart(int cartIndex) {
-        if (cartIndex < 0 || cartIndex >= cartsList.size()) {
-            System.out.println("Invalid cart index.");
-            return;
-        }
-
-        Cart cart = cartsList.get(cartIndex);
-        Customer customer = cart.getCustomer();
-        System.out.println(customer);
-
-        List<Book> books = cart.getBooks();
-        System.out.println("Books in Cart:");
-        for (Book book : books) {
-            System.out.println(book);
-        }
-    }
 }

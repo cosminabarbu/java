@@ -59,15 +59,21 @@ public class VinylManagement {
         }
     }
 
-    public Vinyl findByTitle(String title) {
+    public List<Vinyl> findByTitle(String title) {
+        List<Vinyl> matchingVinyls = new ArrayList<>();
+
         for (Vinyl vinyl : vinylsList.values()) {
             if (vinyl.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                System.out.println("Vinyl with title containing \"" + title + "\" found");
-                return vinyl;
+                System.out.println("Vinyl with title containing \"" + title + "\" found: " + vinyl.getTitle());
+                matchingVinyls.add(vinyl);
             }
         }
-        System.out.println("Vinyl with title containing \"" + title + "\" was not found");
-        return null;
+
+        if (matchingVinyls.isEmpty()) {
+            System.out.println("No vinyls with title containing \"" + title + "\" were found");
+        }
+
+        return matchingVinyls;
     }
 
     public List<Vinyl> findByGenre(String genre) {

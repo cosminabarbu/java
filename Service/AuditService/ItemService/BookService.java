@@ -138,4 +138,18 @@ public class BookService {
         writeService.writeAction("Author with most books found");
         return authorSearched;
     }
+
+    public List<Book> findBookByTitle(String title){
+        WriteService writeService = new WriteService();
+        List<Book> titleBooks = bookManagement.findByTitle(title);
+        writeService.writeAction("Books found by title");
+        return titleBooks;
+    }
+
+    public List<Book> findBooksBySection(String section){
+        WriteService writeService = new WriteService();
+        List<Book> sectionBooks = bookManagement.findByTitle(section);
+        writeService.writeAction("Books found by section");
+        return sectionBooks;
+    }
 }

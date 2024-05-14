@@ -61,15 +61,21 @@ public class BookManagement {
         }
     }
 
-    public Book findByTitle(String title) {
+    public List<Book> findByTitle(String title) {
+        List<Book> matchingBooks = new ArrayList<>();
+
         for (Book book : booksList.values()) {
             if (book.getTitle().toLowerCase().contains(title.toLowerCase())) {
-                System.out.println("Book with title containing \"" + title + "\" found");
-                return book;
+                System.out.println("Book with title containing \"" + title + "\" found: " + book.getTitle());
+                matchingBooks.add(book);
             }
         }
-        System.out.println("Book with title containing \"" + title + "\" was not found");
-        return null;
+
+        if (matchingBooks.isEmpty()) {
+            System.out.println("No books with title containing \"" + title + "\" were found");
+        }
+
+        return matchingBooks;
     }
 
     public List<Book> findBySection(Section section) {
