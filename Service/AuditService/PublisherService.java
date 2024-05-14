@@ -4,6 +4,7 @@ import Management.AuthorManagement;
 import Models.Author;
 import Models.Publisher;
 import Management.PublisherManagement;
+import Service.AuditService.AuthorService;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,8 +35,9 @@ public class PublisherService {
         return instance;
     }
 
-    public List<Publisher> readPublishersFromCSV(String filePath) {
+    public List<Publisher> readPublishersFromCSV(String filePath, List<Author> authors) {
         List<Publisher> publishers = new ArrayList<>();
+        authorManagement.loadAuthors(authors);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -79,7 +81,6 @@ public class PublisherService {
         return result;
     }
 
-    // Method to input authors for the publisher
     private ArrayList<Author> inputAuthors() {
         ArrayList<Author> authors = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);

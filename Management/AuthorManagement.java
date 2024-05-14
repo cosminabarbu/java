@@ -15,7 +15,7 @@ public class AuthorManagement {
         this.authorsList = new ArrayList<>();
     }
 
-    public void loadAuthorsFromCSV(List<Author> authors ) {
+    public void loadAuthors(List<Author> authors ) {
         for(Author author : authors) {
             this.authorsList.add(author);
         }
@@ -47,7 +47,7 @@ public class AuthorManagement {
                 return author;
             }
         }
-        System.out.println("Author" + name + "was not found");
+        System.out.println("Author " + name + " was not found");
         return null;
     }
 
