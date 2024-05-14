@@ -47,6 +47,7 @@ public class AuthorManagement {
                 return author;
             }
         }
+        System.out.println("Author" + name + "was not found");
         return null;
     }
 
@@ -59,18 +60,25 @@ public class AuthorManagement {
                 return;
             }
         }
+        System.out.println("Author" + name + "was not found");
     }
 
-    public Author findByNationality(String nationality) {
+    public List<Author> findByNationality(String nationality) {
+        List<Author> foundAuthors = new ArrayList<>();
         for(Author author : authorsList){
             if(author.getNationality().toLowerCase().contains(nationality.toLowerCase())) {
-                System.out.println(author);
-                return author;
+//                System.out.println(author);
+                foundAuthors.add(author);
+
 
             }
         }
-        System.out.println("No "  + nationality + " author was not found");
-        return null;
+        if(foundAuthors.size() == 0) {
+            System.out.println("No "  + nationality + " author was not found");
+            return null;
+        }
+        return foundAuthors;
+
     }
 
 

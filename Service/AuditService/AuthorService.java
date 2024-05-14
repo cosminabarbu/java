@@ -86,9 +86,11 @@ public class AuthorService {
         writeService.writeAction("Author deleted");
     }
 
-    public void findAuthorByNationality(String nationality){
+    public List<Author> findAuthorByNationality(String nationality){
         WriteService writeService = new WriteService();
+        List<Author> authors = authorManagement.findByNationality(nationality);
         authorManagement.findByNationality(nationality);
         writeService.writeAction("Authors searched by nationality");
+        return authors;
     }
 }
