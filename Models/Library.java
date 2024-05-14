@@ -15,20 +15,19 @@ public class Library {
     private Library() {
     }
 
-    public Library(String name, String address, List<Customer> customers, List<Book> books, List<Cart> carts) {
-        this.name = name;
-        this.address = address;
-        this.customers = customers;
-        this.books = books;
-        this.carts = carts;
-    }
+//    public Library(String name, String address, List<Customer> customers, List<Book> books, List<Cart> carts) {
+//        this.name = name;
+//        this.address = address;
+//        this.customers = customers;
+//        this.books = books;
+//        this.carts = carts;
+//    }
 
     public static Library getInstance() {
+        if (instance == null) {
+            instance = new Library();
+        }
         return instance;
-    }
-
-    public static void setInstance(Library instance) {
-        Library.instance = instance;
     }
 
     public String getName() {

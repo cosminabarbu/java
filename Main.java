@@ -12,8 +12,25 @@ import Models.Customer.Customer;
 
 public class Main {
     public static void main(String[] args) {
-        AuthorService authorService = new AuthorService();
+
+        AuthorService authorService = AuthorService.getInstance();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         List<Author> authors = authorService.readAuthorsFromCSV("Files/Database/Author.csv");
+
+
 
         // Display the read authors
         for (Author author : authors) {
@@ -23,6 +40,7 @@ public class Main {
 
         authorService.findAuthorByNationality("Italian");
 
+
         Customer customer = new Member();
         System.out.println(customer);
 
@@ -31,7 +49,6 @@ public class Main {
 
         Cart cart = new Cart(customer, books, vinyls);
         System.out.println(cart);
-
 
     }
 }

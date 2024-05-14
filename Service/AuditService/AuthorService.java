@@ -12,12 +12,22 @@ import java.util.Scanner;
 
 public class AuthorService {
     private AuthorManagement authorManagement;
+    private static AuthorService instance;
 
     public AuthorService() {
         this.authorManagement = new AuthorManagement();
     }
 
-
+    public static AuthorService getInstance() {
+        if (instance == null) {
+            synchronized (AuthorService.class) {
+                if(instance == null){
+                    instance = new AuthorService();
+                }
+            }
+        }
+        return instance;
+    }
     public List<Author> readAuthorsFromCSV(String filePath) {
         List<Author> authors = new ArrayList<>();
 
