@@ -71,7 +71,7 @@ public class Book extends LibraryItem {
                 ", stock=" + stock +
                 ", rating=" + rating +
                 ", itemId=" + itemId +
-                "author=" + author +
+                ", author=" + author +
                 ", section=" + section +
                 ", publisher=" + publisher +
                 ", pageNo=" + pageNo +

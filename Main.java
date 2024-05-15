@@ -5,9 +5,11 @@ import Models.Customer.Member;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 import Models.Publisher;
+import Models.Section;
 import Service.AuditService.AuthorService;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,10 +33,12 @@ public class Main {
         StudentService studentService = StudentService.getInstance();
         CartService cartService = CartService.getInstance();
 
+        EnumSet<Section> sections = EnumSet.of(Section.FICTION, Section.NONFICTION, Section.DRAMA, Section.POETRY, Section.FOLKTALE );
         List<Author> authors = authorService.readAuthorsFromCSV("Files/Database/Author.csv");
         List<Publisher> publishers = publisherService.readPublishersFromCSV("Files/Database/Publisher.csv", authors);
-        List<Book> books = bookService.readBooksFromCSV("Files/Database/Book.csv");
+        List<Book> books = bookService.readBooksFromCSV("Files/Database/Book.csv", authors, publishers, sections);
         List<Vinyl> vinyls = vinylService.readVinylsFromCSV("Files/Database/Vinyl.csv");
+
 
         System.out.println("Library");
         Scanner scanner = new Scanner(System.in);

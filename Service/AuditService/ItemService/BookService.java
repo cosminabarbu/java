@@ -12,10 +12,7 @@ import Service.AuditService.WriteService;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class BookService {
     private BookManagement bookManagement;
@@ -27,6 +24,8 @@ public class BookService {
 
     private BookService() {
         this.bookManagement = new BookManagement();
+        this.authorsList = new ArrayList<>();
+        this.publishersList = new ArrayList<>();
     }
 
     public static BookService getInstance() {
@@ -40,7 +39,7 @@ public class BookService {
         return instance;
     }
 
-    public List<Book> readBooksFromCSV(String filePath) {
+    public List<Book> readBooksFromCSV(String filePath, List<Author> authorsList, List<Publisher> publishersList, Set<Section> sections){
         List<Book> books = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -60,11 +59,13 @@ public class BookService {
                 int year = Integer.parseInt(parts[8]);
 
                 Author author = authorManagement.get(authorName);
-                Section section = Section.valueOf(sectionName);;
+                Section section = Section.valueOf(sectionName.toUpperCase());
                 Publisher publisher = publisherManagement.get(publisherName);
 
-                Book book = new Book(title, price, stock, rating, author, section, publisher, pageNo, year);
-                books.add(book);
+                if (sections.contains(section)) {
+                    Book book = new Book(title, price, stock, rating, author, section, publisher, pageNo, year);
+                    books.add(book);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
