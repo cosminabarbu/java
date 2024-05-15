@@ -92,7 +92,7 @@ public class CartService {
         }
 
         System.out.println("Add books from the following list: ");
-        books = bookManagement.getAll();
+        books = bookManagement.getAllBooks();
         int bookId = scanner.nextInt();
         while(bookId != -1 ) {
             for (Map.Entry<Integer, Book> book : books.entrySet()) {
@@ -105,7 +105,7 @@ public class CartService {
         }
 
         System.out.println("Add vinyls from the following list: ");
-        vinyls = vinylManagement.getAll();
+        vinyls = vinylManagement.getAllVinyls();
         int vinylId = scanner.nextInt();
         while(vinylId != -1 ) {
             for (Map.Entry<Integer, Vinyl> vinyl : vinyls.entrySet()) {

@@ -30,12 +30,12 @@ public class PublisherManagement {
         Iterator<Publisher> iterator = publishersList.iterator();
         while(iterator.hasNext()){
             Publisher publisher = iterator.next();
-            if(publisher.getName().equals(name)){
+            if(publisher.getName().toLowerCase().equals(name.toLowerCase())){
                 iterator.remove();
-                System.out.println("Publisher" + name + " deleted.");
+                System.out.println("Publisher " + name + " deleted.");
             }
         }
-        System.out.println("Publisher" + name + " was not found.");
+        System.out.println("Publisher " + name + " was not found.");
     }
 
     public Publisher get(String name){
@@ -57,7 +57,7 @@ public class PublisherManagement {
         ListIterator<Publisher> iterator = publishersList.listIterator();
         while(iterator.hasNext()){
             Publisher publisher = iterator.next();
-            if(publisher.getName().equals(name)){
+            if(publisher.getName().toLowerCase().equals(name.toLowerCase())){
                 iterator.set(updatedPublisher);
                 return;
             }
