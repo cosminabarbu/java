@@ -78,7 +78,7 @@ public abstract class Customer {
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
                 ", customerId=" + customerId +
-                '}';
+                '}' + "\n";
     }
 
     public abstract double getDiscount();

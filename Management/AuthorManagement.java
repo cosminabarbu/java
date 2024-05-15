@@ -15,7 +15,7 @@ public class AuthorManagement {
         this.authorsList = new ArrayList<>();
     }
 
-    public void loadAuthors(List<Author> authors ) {
+    public void loadAuthors(List<Author> authors) {
         for(Author author : authors) {
             this.authorsList.add(author);
         }
@@ -31,9 +31,10 @@ public class AuthorManagement {
         Iterator<Author> iterator = authorsList.iterator();
         while(iterator.hasNext()){
             Author author = iterator.next();
-            if(author.getName().equals(name)){
+            if(author.getName().toLowerCase().equals(name.toLowerCase())){
                 iterator.remove();
-                System.out.println("Author" + name + "was deleted successfully");
+                System.out.println("Author " + name + " was deleted successfully");
+                return;
             }
         }
         System.out.println("Author" + name + "was not found");
@@ -73,13 +74,16 @@ public class AuthorManagement {
             if(author.getNationality().toLowerCase().contains(nationality.toLowerCase())) {
 //                System.out.println(author);
                 foundAuthors.add(author);
-
-
             }
         }
         if(foundAuthors.size() == 0) {
             System.out.println("No "  + nationality + " author was not found");
             return null;
+        } else {
+            System.out.println("Authors found: ");
+            for (Author author : foundAuthors) {
+                System.out.println(author);
+            }
         }
         return foundAuthors;
 

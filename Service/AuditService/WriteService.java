@@ -14,7 +14,7 @@ public class WriteService {
             long currentTimestamp = System.currentTimeMillis();
             String formattedDate = dateFormat.format(new Date(currentTimestamp));
             writer.write(action + ", " + formattedDate + "\n");
-            System.out.println("The action " + action + " has been successfully executed.");
+            //System.out.println("The action " + action + " has been successfully executed.");
 
         } catch (IOException e) {
             System.err.println("There has been an error with the CSV file");

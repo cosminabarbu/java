@@ -99,7 +99,7 @@ public class BookService {
         Book book = new Book(title, price, stock, rating, author, section, publisher, pageNo, year);
         bookManagement.add(book);
 
-        writeService.writeAction("added book" + title);
+        writeService.writeAction("Book added");
     }
 
     private Author getAuthorByName(String name) {
@@ -140,18 +140,18 @@ public class BookService {
     public void updateBook(int bookId, Book updatedBook) {
         WriteService writeService = new WriteService();
         bookManagement.update(bookId, updatedBook);
-        writeService.writeAction("Book updated: " + updatedBook.getTitle());
+        writeService.writeAction("Book updated");
     }
 
     public void deleteBook(int bookId) {
         WriteService writeService = new WriteService();
         bookManagement.delete(bookId);
-        writeService.writeAction("Book deleted with id: " + bookId);
+        writeService.writeAction("Book deleted");
     }
 
-    public Author findAuthorWithMostBooks(List<Book> books){
+    public List<Author> findAuthorWithMostBooks(List<Book> books){
         WriteService writeService = new WriteService();
-        Author authorSearched =  bookManagement.findAuthorWithMostBooks(books);
+        List<Author> authorSearched =  bookManagement.findAuthorWithMostBooks(books);
         writeService.writeAction("Author with most books found");
         return authorSearched;
     }

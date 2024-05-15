@@ -60,6 +60,6 @@ public class Member extends Customer {
                 ", address='" + address + '\'' +
                 ", customerId=" + customerId +
                 ", subscriptionDate=" + subscriptionDate +
-                '}';
+                '}' + "\n";
     }
 }

@@ -22,7 +22,6 @@ public class PublisherManagement {
 
     public Publisher add(Publisher publisher){
         this.publishersList.add(publisher);
-        System.out.println(publishersList);
         return publisher;
     }
 

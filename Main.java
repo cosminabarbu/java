@@ -50,7 +50,8 @@ public class Main {
             switch (Integer.parseInt(option)) {
                 case 1:
                     System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add author.\n\"2\" Get author." +
-                            "\n\"3\": Update author.\n\"4\": Delete author.\n\"5\": Find author by nationality." );
+                            "\n\"3\": Update author.\n\"4\": Delete author.\n\"5\": Find author by nationality." +
+                            "\n\"6\": Get all authors.");
                     option = scanner.nextLine();
                     System.out.println("You chose: " + option);
                     switch (Integer.parseInt(option)) {
@@ -67,7 +68,6 @@ public class Main {
                         case 3:
                             System.out.println("Enter the name of the author to be changed: ");
                             String name3 = scanner.nextLine();
-//                            Author author3 = authorService.getAuthor(name3);
                             Author newAuthor = new Author();
                             System.out.println("Enter the author's new name: " );
                             String newName = scanner.nextLine();
@@ -93,18 +93,24 @@ public class Main {
                             String nationality = scanner.nextLine().toLowerCase();
                             List<Author> authors1 = authorService.findAuthorByNationality(nationality);
                             break;
+                        case 6:
+                            List<Author> authorsGetAll = authorService.getAll();
+                            for(Author author : authorsGetAll) {
+                                System.out.println(author);
+                            }
+                            break;
                     }
                     break;
                 case 2:
                     System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add publisher.\n\"2\" Get publisher." +
                             "\n\"3\": Update publisher.\n\"4\": Delete publisher.\n\"5\": Add author to pubisher." +
-                            "\n\"6\": Remove author from pubisher." );
+                            "\n\"6\": Remove author from pubisher.\n\"7\": Get all publishers." );
                     option = scanner.nextLine();
                     System.out.println("You chose: " + option);
                     switch (Integer.parseInt(option)) {
                         case 1:
                             Publisher publisher1 = publisherService.addPublisher();
-                            System.out.println("Author added: " + publisher1);
+                            System.out.println("Publisher added: " + publisher1);
                             break;
                         case 2:
                             System.out.println("Enter the name of the publisher: ");
@@ -113,28 +119,20 @@ public class Main {
                             System.out.println("Publisher found: " + publisher2);
                             break;
                         case 3:
-                            System.out.println("Enter the name of the author to be changed: ");
-                            String name3 = scanner.nextLine();
-                            Author author3 = authorService.getAuthor(name3);
-                            //Author newAuthor = new Author();
-                            System.out.println("Enter the author's new name: " );
-                            String newName = scanner.nextLine();
-                            author3.setName(newName);
-                            System.out.println("Enter the author's new nationality: ");
-                            String newNationality = scanner.nextLine();
-                            author3.setNationality(newNationality);
-                            System.out.println("Enter the author's new birth year: ");
-                            int newBirthYear = scanner.nextInt();
-                            author3.setBirthYear(newBirthYear);
-                            authorService.updateAuthor(name3, author3);
-                            System.out.println("New author info: " + author3);
+                            System.out.println("Enter the name of the publisher to be changed: ");
+                            String nameUpdate = scanner.nextLine();
+                            System.out.println("Enter new authors list for this publisher.");
+                            ArrayList<Author> newAuthors = publisherService.inputAuthors();
+                            Publisher newPublisher = new Publisher(nameUpdate, newAuthors);
+                            publisherService.updatePublisher(nameUpdate, newPublisher);
+                            System.out.println("New publisher info: " + newPublisher);
                             break;
                         case 4:
                             System.out.println("Enter the name of the publisher to be deleted: ");
-                            String name4 = scanner.nextLine();
-                            Publisher publisher4 = publisherService.getPublisher(name4);
-                            publisherService.deletePublisher(name4);
-                            System.out.println("Publisher deleted: " + publisher4);
+                            String nameDelete = scanner.nextLine();
+                            Publisher publisherDelete = publisherService.getPublisher(nameDelete);
+                            publisherService.deletePublisher(nameDelete);
+                            System.out.println("Publisher deleted: " + publisherDelete);
                             break;
                         case 5:
                             System.out.println("Enter the name of the publisher to add author to: ");

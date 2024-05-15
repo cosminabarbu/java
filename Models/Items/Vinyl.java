@@ -50,6 +50,6 @@ public class Vinyl extends LibraryItem {
                 "singer='" + singer + '\'' +
                 ", genre='" + genre + '\'' +
                 ", specialEdition=" + specialEdition +
-                '}';
+                '}' + "\n";
     }
 }

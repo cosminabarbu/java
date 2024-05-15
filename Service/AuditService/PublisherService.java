@@ -77,11 +77,11 @@ public class PublisherService {
         ArrayList<Author> authors = inputAuthors();
         Publisher publisher = new Publisher(name, authors);
         Publisher result = publisherManagement.add(publisher);
-        writeService.writeAction("added publisher");
+        writeService.writeAction("Publisher added");
         return result;
     }
 
-    private ArrayList<Author> inputAuthors() {
+    public ArrayList<Author> inputAuthors() {
         ArrayList<Author> authors = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
@@ -92,7 +92,7 @@ public class PublisherService {
         for (int i = 0; i < numAuthors; i++) {
             System.out.println("Enter author " + (i + 1) + " name:");
             String authorName = scanner.nextLine();
-            Author author = getAuthorByName(authorName);
+            Author author = authorManagement.get(authorName);
             if (author != null) {
                 authors.add(author);
             } else {
@@ -101,15 +101,6 @@ public class PublisherService {
         }
 
         return authors;
-    }
-
-    private Author getAuthorByName(String name) {
-        for (Author author : authorsList) {
-            if (author.getName().equalsIgnoreCase(name)) {
-                return author;
-            }
-        }
-        return null;
     }
 
     public Publisher getPublisher(String name) {

@@ -122,6 +122,6 @@ public class Cart {
                 "customer=" + customer +
                 ", books=" + books +
                 ", vinyls=" + vinyls +
-                '}';
+                '}' + "\n";
     }
 }

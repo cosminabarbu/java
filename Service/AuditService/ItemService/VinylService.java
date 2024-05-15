@@ -78,7 +78,7 @@ public class VinylService {
         Vinyl vinyl = new Vinyl(title, price, stock, rating, singer, genre, limitedEdition);
         Vinyl result = vinylManagement.add(vinyl);
 
-        writeService.writeAction("added vinyl");
+        writeService.writeAction("Vinyl added");
         return result;
     }
 
@@ -94,26 +94,26 @@ public class VinylService {
     public void updateVinyl(int vinylId, Vinyl vinyl){
         WriteService writeService = new WriteService();
         vinylManagement.update(vinylId, vinyl);
-        writeService.writeAction("vinyl updated");
+        writeService.writeAction("Vinyl updated");
     }
 
     public void deleteVinyl(int vinylId){
         WriteService writeService = new WriteService();
         vinylManagement.delete(vinylId);
-        writeService.writeAction("vinyl deleted");
+        writeService.writeAction("Vinyl deleted");
     }
 
     public List<Vinyl> findVinylByTitle(String title){
         WriteService writeService = new WriteService();
         List<Vinyl> titleVynils = vinylManagement.findByTitle(title);
-        writeService.writeAction("find vinyl by title");
+        writeService.writeAction("Vinyl searched by title");
         return titleVynils;
     }
 
     public List<Vinyl> findVinylByGenre(String genre){
         WriteService writeService = new WriteService();
         List<Vinyl> genreVynils = vinylManagement.findByGenre(genre);
-        writeService.writeAction("find vinyl by genre");
+        writeService.writeAction("Vinyl searched by genre");
         return genreVynils;
     }
 

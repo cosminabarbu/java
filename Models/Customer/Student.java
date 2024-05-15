@@ -24,7 +24,7 @@ public class Student extends Customer {
                 ", university='" + university + '\'' +
                 ", studentId=" + studentId +
                 ", customerId=" + customerId +
-                '}';
+                '}' + "\n";
     }
 
     @Override

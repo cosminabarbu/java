@@ -18,7 +18,7 @@ public class Regular extends Customer {
                 ", birthday=" + birthday +
                 ", address='" + address + '\'' +
                 ", customerId=" + customerId +
-                '}';
+                '}' + "\n";
     }
 
     @Override

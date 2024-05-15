@@ -93,13 +93,6 @@ public class AuthorService {
     public List<Author> findAuthorByNationality(String nationality){
         WriteService writeService = new WriteService();
         List<Author> authors = authorManagement.findByNationality(nationality);
-        if(authors != null){
-            System.out.println("Authors found: ");
-            for (Author author : authors) {
-                System.out.println(author);
-            }
-        }
-
         writeService.writeAction("Authors searched by nationality");
         return authors;
     }

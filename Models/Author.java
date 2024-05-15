@@ -43,7 +43,7 @@ public class Author {
                 "name='" + name + '\'' +
                 ", nationality='" + nationality + '\'' +
                 ", birthYear=" + birthYear +
-                '}';
+                '}' + "\n";
     }
 }
 

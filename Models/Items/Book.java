@@ -76,6 +76,6 @@ public class Book extends LibraryItem {
                 ", publisher=" + publisher +
                 ", pageNo=" + pageNo +
                 ", year=" + year +
-                '}';
+                '}' + "\n";
     }
 }
