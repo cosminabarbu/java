@@ -74,7 +74,7 @@ public class VinylService {
         System.out.println("Enter the genre:");
         String genre = scanner.nextLine();
         System.out.println("Is it in limited edition?");
-        String limitedEdition = scanner.next();
+        String limitedEdition = scanner.nextLine();
         Vinyl vinyl = new Vinyl(title, Double.parseDouble(price), Integer.parseInt(stock), Double.parseDouble(rating), singer, genre, Boolean.parseBoolean(limitedEdition));
         Vinyl result = vinylManagement.add(vinyl);
 

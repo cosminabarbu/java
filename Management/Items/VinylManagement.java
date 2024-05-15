@@ -23,7 +23,7 @@ public class VinylManagement {
 
     public Vinyl add(Vinyl vinyl) {
         vinylsList.put(vinyl.getItemId(), vinyl);
-        System.out.println(vinylsList);
+        //System.out.println(vinylsList);
         return vinyl;
     }
 
@@ -73,6 +73,7 @@ public class VinylManagement {
 
         if (matchingVinyls.isEmpty()) {
             System.out.println("No vinyls with title containing \"" + title + "\" were found");
+            return null;
         }
 
         return matchingVinyls;
@@ -94,6 +95,7 @@ public class VinylManagement {
             }
         } else {
             System.out.println("No vinyls with genre containing \"" + genre + "\" found");
+            return null;
         }
 
         return foundVinyls;
