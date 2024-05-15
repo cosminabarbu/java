@@ -73,7 +73,7 @@ public class BookService {
         return books;
     }
 
-    public void addBook() {
+    public Book addBook() {
         Scanner scanner = new Scanner(System.in);
         WriteService writeService = new WriteService();
 
@@ -100,6 +100,7 @@ public class BookService {
         bookManagement.add(book);
 
         writeService.writeAction("Book added");
+        return book;
     }
 
     private Author getAuthorByName(String name) {
