@@ -42,7 +42,7 @@ public class PublisherManagement {
         Iterator<Publisher> iterator = publishersList.iterator();
         while(iterator.hasNext()){
             Publisher publisher = iterator.next();
-            if(publisher.getName().equals(name)){
+            if(publisher.getName().toLowerCase().equals(name.toLowerCase())){
                 return publisher;
             }
         }
