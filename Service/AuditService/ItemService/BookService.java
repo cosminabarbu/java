@@ -41,6 +41,8 @@ public class BookService {
 
     public List<Book> readBooksFromCSV(String filePath, List<Author> authorsList, List<Publisher> publishersList, Set<Section> sections){
         List<Book> books = new ArrayList<>();
+        authorManagement.loadAuthors(authorsList);
+        publisherManagement.loadPublishers(publishersList);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -70,7 +72,7 @@ public class BookService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        bookManagement.loadBooksFromCSV(books);
+        bookManagement.loadBooks(books);
         return books;
     }
 
@@ -81,11 +83,11 @@ public class BookService {
         System.out.println("Enter the title of the book:");
         String title = scanner.nextLine();
         System.out.println("Enter the price of the book:");
-        double price = scanner.nextDouble();
+        String price = scanner.nextLine();
         System.out.println("Enter the stock of the book:");
-        int stock = scanner.nextInt();
+        String stock = scanner.nextLine();
         System.out.println("Enter the rating of the book:");
-        double rating = scanner.nextDouble();
+        String rating = scanner.nextLine();
         System.out.println("Enter the author of the book:");
         Author author = authorManagement.get(scanner.nextLine());
         System.out.println("Enter the section of the book:");
@@ -93,11 +95,11 @@ public class BookService {
         System.out.println("Enter the publisher of the book:");
         Publisher publisher = publisherManagement.get(scanner.nextLine());
         System.out.println("Enter the number of pages of the book:");
-        int pageNo = scanner.nextInt();
+        String pageNo = scanner.nextLine();
         System.out.println("Enter the year of publication of the book:");
-        int year = scanner.nextInt();
+        String year = scanner.nextLine();
 
-        Book book = new Book(title, price, stock, rating, author, section, publisher, pageNo, year);
+        Book book = new Book(title, Double.parseDouble(price), Integer.parseInt(stock), Double.parseDouble(rating), author, section, publisher, Integer.parseInt(pageNo), Integer.parseInt(year));
         bookManagement.add(book);
 
         writeService.writeAction("Book added");
@@ -139,10 +141,11 @@ public class BookService {
         return bookManagement.getAllBooks();
     }
 
-    public void updateBook(int bookId, Book updatedBook) {
+    public Book updateBook(int bookId, Book updatedBook) {
         WriteService writeService = new WriteService();
-        bookManagement.update(bookId, updatedBook);
+        Book newBook = bookManagement.update(bookId, updatedBook);
         writeService.writeAction("Book updated");
+        return newBook;
     }
 
     public void deleteBook(int bookId) {
@@ -167,7 +170,7 @@ public class BookService {
 
     public List<Book> findBooksBySection(String section){
         WriteService writeService = new WriteService();
-        List<Book> sectionBooks = bookManagement.findByTitle(section);
+        List<Book> sectionBooks = bookManagement.findBySection(section);
         writeService.writeAction("Books found by section");
         return sectionBooks;
     }

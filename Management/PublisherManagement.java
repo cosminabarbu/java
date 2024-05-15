@@ -14,7 +14,7 @@ public class PublisherManagement {
         this.publishersList = new ArrayList<>();
     }
 
-    public void loadPublishersFromCSV(List<Publisher> publishers ) {
+    public void loadPublishers(List<Publisher> publishers ) {
         for(Publisher publisher : publishers) {
             this.publishersList.add(publisher);
         }

@@ -8,10 +8,7 @@ import Models.Publisher;
 import Models.Section;
 import Service.AuditService.AuthorService;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 import Service.AuditService.CartService;
 import Service.AuditService.CustomerService.MemberService;
@@ -173,8 +170,8 @@ public class Main {
                     switch (Integer.parseInt(option)) {
                         case 1:
                             System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add book.\n\"2\" Get book." +
-                                    "\n\"3\": Update book.\n\"4\": Delete book.\n\"5\": Find author with most books." +
-                                    "\n\"6\": Find book by title.\n\"7\": Find book by section.\n\"8\": Get all books." );
+                                    "\n\"3\": Update book.\n\"4\": Delete book.\n\"5\": Find authors with most books." +
+                                    "\n\"6\": Find books by title.\n\"7\": Find book by section.\n\"8\": Get all books." );
                             option = scanner.nextLine();
                             System.out.println("You chose: " + option);
                             switch (Integer.parseInt(option)) {
@@ -182,7 +179,132 @@ public class Main {
                                     Book bookAdd = bookService.addBook();
                                     System.out.println("Book added: " + bookAdd);
                                     break;
+                                case 2:
+                                    Map<Integer, Book> booksGet = bookService.getAll();
+                                    for(Book book : booksGet.values()) {
+                                        System.out.println(book);
+                                    }
+                                    System.out.println("Enter the ID of the book: ");
+                                    String bookGetId = scanner.nextLine();
+                                    Book bookGet = bookService.getBook(Integer.parseInt(bookGetId));
+                                    System.out.println("Book found: " + bookGet);
+                                    break;
+                                case 3:
+                                    System.out.println("Enter the ID of the book to be changed: ");
+                                    String bookUpdateId = scanner.nextLine();
+                                    System.out.println("Enter the book's new title: " );
+                                    String title = scanner.nextLine();
+                                    System.out.println("Enter the book's new price: ");
+                                    String price = scanner.nextLine();
+                                    System.out.println("Enter the book's new stock: ");
+                                    String stock = scanner.nextLine();
+                                    System.out.println("Enter the book's new rating: ");
+                                    String rating = scanner.nextLine();
+                                    System.out.println("Enter the book's new author: ");
+                                    Author author = authorService.getAuthor(scanner.nextLine());
+                                    System.out.println("Enter the book's new section: ");
+                                    Section section = Section.valueOf(scanner.nextLine().toUpperCase());
+                                    System.out.println("Enter the book's new publisher: ");
+                                    Publisher publisher = publisherService.getPublisher(scanner.nextLine());
+                                    System.out.println("Enter the book's new number of pages: ");
+                                    String pageNo = scanner.nextLine();
+                                    System.out.println("Enter the book's new year: ");
+                                    String year = scanner.nextLine();
+                                    Book newBook = bookService.updateBook(Integer.parseInt(bookUpdateId), new Book(title, Integer.parseInt(price), Integer.parseInt(stock), Double.parseDouble(rating),
+                                            author, section, publisher, Integer.parseInt(pageNo), Integer.parseInt(year) ));
+                                    System.out.println("New book info: " + newBook);
+                                    break;
+                                case 4:
+                                    Map<Integer, Book> booksDelete = bookService.getAll();
+                                    for(Book book : booksDelete.values()) {
+                                        System.out.println(book);
+                                    }
+                                    System.out.println("Enter the ID of the book: ");
+                                    String bookDeleteId = scanner.nextLine();
+                                    Book bookDelete = bookService.getBook(Integer.parseInt(bookDeleteId));
+                                    bookService.deleteBook(Integer.parseInt(bookDeleteId));
+                                    System.out.println("Book found: " + bookDelete);
+                                    break;
+                                case 5:
+                                    Map<Integer, Book> booksFindAuthor = bookService.getAll();
+                                    List<Book> booksList = new ArrayList<>(booksFindAuthor.values());
+                                    List<Author> authorsFindAuthor = bookService.findAuthorWithMostBooks(booksList);
+                                    System.out.println("The authors found: ");
+                                    for(Author authorBest : authorsFindAuthor){
+                                        System.out.println(authorBest);
+                                    }
+                                    break;
+                                case 6:
+                                    System.out.println("Enter the title of the book to be found: ");
+                                    String titleToBeFound = scanner.nextLine().toLowerCase();
+                                    List<Book> booksFindByTitle = bookService.findBookByTitle(titleToBeFound);
+                                    break;
+                                case 7:
+                                    System.out.println("Enter the section of the book to be found: ");
+                                    String sectionToBeFound = scanner.nextLine().toLowerCase();
+                                    List<Book> booksFindBySection = bookService.findBooksBySection(sectionToBeFound);
+                                    break;
+                                case 8:
+                                    Map<Integer, Book> booksGetAll = bookService.getAll();
+                                    for(Book book : booksGetAll.values()) {
+                                        System.out.println(book);
+                                    }
+                                    break;
                             }
+                            break;
+                        case 2:
+                            System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add vinyl.\n\"2\" Get vinyl." +
+                                    "\n\"3\": Update vinyl.\n\"4\": Delete vinyl.\n\"5\": Find vinyls by title." +
+                                    "\n\"6\": Find vinyls by genre.\n\"7\": Get all vinyls." );
+                            option = scanner.nextLine();
+                            System.out.println("You chose: " + option);
+                            switch (Integer.parseInt(option)) {
+                                case 1:
+                                    Vinyl vinylAdd = vinylService.addVinyl();
+                                    System.out.println("Vinyl added: " + vinylAdd);
+                                    break;
+                                case 2:
+                                    Map<Integer, Vinyl> vinylsGet = vinylService.getAll();
+                                    for(Vinyl vinyl : vinylsGet.values()) {
+                                        System.out.println(vinyl);
+                                    }
+                                    System.out.println("Enter the ID of the vinyl: ");
+                                    String vinylGetId = scanner.nextLine();
+                                    Vinyl vinylGet = vinylService.getVinyl(Integer.parseInt(vinylGetId));
+                                    System.out.println("Vinyl found: " + vinylGet);
+                                    break;
+                                case 3:
+                                    System.out.println("Enter the ID of the vinyl to be changed: ");
+                                    String vinylUpdateId = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new title: " );
+                                    String title = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new price: ");
+                                    String price = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new stock: ");
+                                    String stock = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new rating: ");
+                                    String rating = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new singer: ");
+                                    String singer = scanner.nextLine();
+                                    System.out.println("Enter the vinyl's new genre: ");
+                                    String genre = scanner.nextLine();
+                                    System.out.println("Is the new vinyl in special edition? : ");
+                                    String specialEdition = scanner.nextLine();
+                                    Vinyl newVinyl = vinylService.updateVinyl(Integer.parseInt(vinylUpdateId), new Vinyl(title, Integer.parseInt(price), Integer.parseInt(stock), Double.parseDouble(rating),
+                                            singer, genre, Boolean.parseBoolean(specialEdition) ));
+                                    System.out.println("New vinyl info: " + newVinyl);
+                                    break;
+                                case 7:
+                                    Map<Integer, Vinyl> vinylsGetAll = vinylService.getAll();
+                                    for(Vinyl vinyl : vinylsGetAll.values()) {
+                                        System.out.println(vinyl);
+                                    }
+                                    break;
+
+
+                            }
+
+
                     }
 
             }

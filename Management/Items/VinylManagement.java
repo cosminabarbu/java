@@ -15,7 +15,7 @@ public class VinylManagement {
         this.vinylsList = new HashMap<>();
     }
 
-    public void loadVinylsFromCSV(List<Vinyl> vinyls) {
+    public void loadVinyls(List<Vinyl> vinyls) {
         for (Vinyl vinyl : vinyls) {
             this.vinylsList.put(vinyl.getItemId(), vinyl);
         }
@@ -50,13 +50,15 @@ public class VinylManagement {
         }
     }
 
-    public void update(int vinylId, Vinyl updatedVinyl) {
+    public Vinyl update(int vinylId, Vinyl updatedVinyl) {
         if(vinylsList.containsKey(vinylId)) {
             vinylsList.put(vinylId, updatedVinyl);
             System.out.println("Vinyl with id " + vinylId + " was updated successfully");
         } else {
             System.out.println("Vinyl with id " + vinylId + " was not found");
+            return null;
         }
+        return updatedVinyl;
     }
 
     public List<Vinyl> findByTitle(String title) {

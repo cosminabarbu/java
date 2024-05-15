@@ -17,7 +17,7 @@ public class BookManagement {
         this.booksList = new HashMap<>();
     }
 
-    public void loadBooksFromCSV(List<Book> books) {
+    public void loadBooks(List<Book> books) {
         for (Book book : books) {
             this.booksList.put(book.getItemId(), book);
         }
@@ -25,7 +25,7 @@ public class BookManagement {
 
     public Book add(Book book) {
       booksList.put(book.getItemId(), book);
-      System.out.println(booksList);
+      //System.out.println(booksList);
       return book;
     }
 
@@ -52,12 +52,14 @@ public class BookManagement {
         return booksList;
     }
 
-    public void update(int bookId, Book updatedBook){
+    public Book update(int bookId, Book updatedBook){
         if(booksList.containsKey(bookId)){
             booksList.put(bookId, updatedBook);
             System.out.println("Book with id" + bookId + " was updated successfully");
+            return booksList.get(bookId);
         } else {
             System.out.println("Book with id" + bookId + " was not found");
+            return null;
         }
     }
 
@@ -78,13 +80,19 @@ public class BookManagement {
         return matchingBooks;
     }
 
-    public List<Book> findBySection(Section section) {
+    public List<Book> findBySection(String section) {
         List<Book> booksInSection = new ArrayList<>();
         for (Book book : booksList.values()) {
-            if (book.getSection() == section) {
+            if (book.getSection().toString().equals(section.toUpperCase())) {
+                System.out.println("Book with section containing \"" + section + "\" found: " + book.getTitle());
                 booksInSection.add(book);
             }
         }
+
+        if (booksInSection.isEmpty()) {
+            System.out.println("No books with section containing \"" + section + "\" were found");
+        }
+
         return booksInSection;
     }
 
@@ -101,6 +109,11 @@ public class BookManagement {
             for (Map.Entry<Author, Integer> entry : authorBookCount.entrySet()) {
                 if (entry.getValue() > maxBooks) {
                     maxBooks = entry.getValue();
+//                    authorWithMostBooks.add(entry.getKey());
+                }
+            }
+            for(Map.Entry<Author, Integer> entry : authorBookCount.entrySet()) {
+                if(entry.getValue() == maxBooks) {
                     authorWithMostBooks.add(entry.getKey());
                 }
             }

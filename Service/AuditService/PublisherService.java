@@ -64,7 +64,7 @@ public class PublisherService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        publisherManagement.loadPublishersFromCSV(publishers);
+        publisherManagement.loadPublishers(publishers);
         return publishers;
     }
 

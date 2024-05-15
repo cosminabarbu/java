@@ -54,7 +54,7 @@ public class VinylService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        vinylManagement.loadVinylsFromCSV(vinyls);
+        vinylManagement.loadVinyls(vinyls);
         return vinyls;
     }
 
@@ -64,18 +64,18 @@ public class VinylService {
         System.out.println("Enter the title of the vinyl:");
         String title = scanner.nextLine();
         System.out.println("Enter the price of the vinyl:");
-        double price = scanner.nextDouble();
+        String price = scanner.nextLine();
         System.out.println("Enter the stock of the vinyl:");
-        int stock = scanner.nextInt();
+        String stock = scanner.nextLine();
         System.out.println("Enter the rating of the vinyl:");
-        double rating = scanner.nextDouble();
+        String rating = scanner.nextLine();
         System.out.println("Enter the singer name:");
         String singer = scanner.nextLine();
         System.out.println("Enter the genre:");
         String genre = scanner.nextLine();
         System.out.println("Is it in limited edition?");
-        Boolean limitedEdition = scanner.nextBoolean();
-        Vinyl vinyl = new Vinyl(title, price, stock, rating, singer, genre, limitedEdition);
+        String limitedEdition = scanner.next();
+        Vinyl vinyl = new Vinyl(title, Double.parseDouble(price), Integer.parseInt(stock), Double.parseDouble(rating), singer, genre, Boolean.parseBoolean(limitedEdition));
         Vinyl result = vinylManagement.add(vinyl);
 
         writeService.writeAction("Vinyl added");
@@ -91,10 +91,11 @@ public class VinylService {
         return vinylManagement.getAllVinyls();
     }
 
-    public void updateVinyl(int vinylId, Vinyl vinyl){
+    public Vinyl updateVinyl(int vinylId, Vinyl vinyl){
         WriteService writeService = new WriteService();
-        vinylManagement.update(vinylId, vinyl);
+        Vinyl newVinyl = vinylManagement.update(vinylId, vinyl);
         writeService.writeAction("Vinyl updated");
+        return newVinyl;
     }
 
     public void deleteVinyl(int vinylId){
