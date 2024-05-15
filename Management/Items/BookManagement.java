@@ -48,7 +48,7 @@ public class BookManagement {
         }
     }
 
-    public Map<Integer, Book> getAll(){
+    public Map<Integer, Book> getAllBooks(){
         return booksList;
     }
 

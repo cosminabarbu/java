@@ -12,6 +12,7 @@ import Service.AuditService.WriteService;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,6 +131,10 @@ public class BookService {
 
     public Book getBook(int bookId) {
         return bookManagement.get(bookId);
+    }
+
+    public Map<Integer, Book> getAll(){
+        return bookManagement.getAllBooks();
     }
 
     public void updateBook(int bookId, Book updatedBook) {

@@ -51,6 +51,10 @@ public class AuthorManagement {
         return null;
     }
 
+    public List<Author> getAllAuthors() {
+        return authorsList;
+    }
+
     public void update(String name, Author updatedAuthor){
         ListIterator<Author> iterator = authorsList.listIterator();
         while(iterator.hasNext()){

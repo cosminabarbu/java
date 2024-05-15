@@ -37,7 +37,7 @@ public class VinylManagement {
         }
     }
 
-    public Map<Integer, Vinyl> getAll(){
+    public Map<Integer, Vinyl> getAllVinyls(){
         return vinylsList;
     }
 

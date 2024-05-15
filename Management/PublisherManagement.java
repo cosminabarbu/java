@@ -49,6 +49,10 @@ public class PublisherManagement {
         return null;
     }
 
+    public List<Publisher> getAllPublishers(){
+        return publishersList;
+    }
+
     public void update(String name, Publisher updatedPublisher){
         ListIterator<Publisher> iterator = publishersList.listIterator();
         while(iterator.hasNext()){

@@ -73,6 +73,10 @@ public class AuthorService {
         return author;
     }
 
+    public List<Author> getAll() {
+        return authorManagement.getAllAuthors();
+    }
+
     public void updateAuthor(String name, Author author){
         WriteService writeService = new WriteService();
         authorManagement.update(name, author);

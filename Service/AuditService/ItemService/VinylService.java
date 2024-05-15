@@ -1,6 +1,7 @@
 package Service.AuditService.ItemService;
 
 import Management.Items.VinylManagement;
+import Models.Author;
 import Models.Items.Vinyl;
 import Service.AuditService.WriteService;
 
@@ -9,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class VinylService {
@@ -83,6 +85,10 @@ public class VinylService {
     public Vinyl getVinyl(int vinylId){
         Vinyl vinyl = vinylManagement.get(vinylId);
         return vinyl;
+    }
+
+    public Map<Integer, Vinyl> getAll() {
+        return vinylManagement.getAllVinyls();
     }
 
     public void updateVinyl(int vinylId, Vinyl vinyl){

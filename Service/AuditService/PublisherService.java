@@ -116,6 +116,10 @@ public class PublisherService {
         return publisherManagement.get(name);
     }
 
+    public List<Publisher> getAll() {
+        return publisherManagement.getAllPublishers();
+    }
+
     public void updatePublisher(String name, Publisher updatedPublisher) {
         WriteService writeService = new WriteService();
         publisherManagement.update(name, updatedPublisher);
