@@ -294,6 +294,28 @@ public class Main {
                                             singer, genre, Boolean.parseBoolean(specialEdition) ));
                                     System.out.println("New vinyl info: " + newVinyl);
                                     break;
+                                case 4:
+                                    Map<Integer, Vinyl> vinylsDelete = vinylService.getAll();
+                                    for(Vinyl vinyl : vinylsDelete.values()) {
+                                        System.out.println(vinylsDelete);
+                                    }
+                                    System.out.println("Enter the ID of the vinyl: ");
+                                    String vinylDeleteId = scanner.nextLine();
+                                    Vinyl vinylDelete = vinylService.getVinyl(Integer.parseInt(vinylDeleteId));
+                                    vinylService.deleteVinyl(Integer.parseInt(vinylDeleteId));
+                                    System.out.println("Vinyl found: " + vinylDelete);
+                                    break;
+                                case 5:
+                                    System.out.println("Enter the title of the vinyl to be found: ");
+                                    String titleToBeFound = scanner.nextLine().toLowerCase();
+                                    List<Vinyl> vinylsFindByTitle = vinylService.findVinylByTitle(titleToBeFound);
+                                    break;
+                                case 6:
+                                    System.out.println("Enter the genre of the vinyl to be found: ");
+                                    String genreToBeFound = scanner.nextLine().toLowerCase();
+                                    List<Vinyl> vinylsFindByGenre = vinylService.findVinylByGenre(genreToBeFound);
+                                    break;
+
                                 case 7:
                                     Map<Integer, Vinyl> vinylsGetAll = vinylService.getAll();
                                     for(Vinyl vinyl : vinylsGetAll.values()) {
