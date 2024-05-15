@@ -2,6 +2,8 @@ import Models.Author;
 import Models.Cart;
 import Models.Customer.Customer;
 import Models.Customer.Member;
+import Models.Customer.Regular;
+import Models.Customer.Student;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 import Models.Publisher;
@@ -35,6 +37,7 @@ public class Main {
         List<Publisher> publishers = publisherService.readPublishersFromCSV("Files/Database/Publisher.csv", authors);
         List<Book> books = bookService.readBooksFromCSV("Files/Database/Book.csv", authors, publishers, sections);
         List<Vinyl> vinyls = vinylService.readVinylsFromCSV("Files/Database/Vinyl.csv");
+        //List<Member>
 
 
         System.out.println("Library");
@@ -299,7 +302,7 @@ public class Main {
                                     for(Vinyl vinyl : vinylsDelete.values()) {
                                         System.out.println(vinylsDelete);
                                     }
-                                    System.out.println("Enter the ID of the vinyl: ");
+                                    System.out.println("Enter the ID of the vinyl to be deleted: ");
                                     String vinylDeleteId = scanner.nextLine();
                                     Vinyl vinylDelete = vinylService.getVinyl(Integer.parseInt(vinylDeleteId));
                                     vinylService.deleteVinyl(Integer.parseInt(vinylDeleteId));
@@ -322,12 +325,172 @@ public class Main {
                                         System.out.println(vinyl);
                                     }
                                     break;
-
-
                             }
-
-
+                            break;
                     }
+                    break;
+                case 4:
+                    System.out.println("Enter the type of customer:\n\"1\": Regular.\n\"2\": Member.\n\"3\": Student.");
+                    option = scanner.nextLine();
+                    System.out.println("You chose: " + option);
+                    switch (Integer.parseInt(option)) {
+                        case 1:
+                            System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add regular customer.\n\"2\" Get regular customer." +
+                                    "\n\"3\": Update the address of regular customer.\n\"4\": Delete regular customer.\n\"5\": Get all regular customers.");
+                            option = scanner.nextLine();
+                            System.out.println("You chose: " + option);
+                            switch (Integer.parseInt(option)) {
+                                case 1:
+                                    Regular regular = regularService.addCustomer();
+                                    System.out.println("Regular customer added:" + regular);
+                                    break;
+                                case 2:
+                                    System.out.print("Enter customer ID: ");
+                                    int customerId = Integer.parseInt(scanner.nextLine());
+                                    Regular customer = regularService.getCustomer(customerId);
+                                    if (customer != null) {
+                                        System.out.println("Regular customer details:");
+                                        System.out.println(customer);
+                                    } else {
+                                        System.out.println("Regular customer not found.");
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.print("Enter customer ID: ");
+                                    int updateCustomerId = Integer.parseInt(scanner.nextLine());
+                                    System.out.print("Enter new address: ");
+                                    String newAddress = scanner.nextLine();
+                                    regularService.updateCustomerAddress(updateCustomerId, newAddress);
+                                    Regular regularUpdate = regularService.getCustomer(updateCustomerId);
+                                    System.out.println("Customer address updated: " + regularUpdate);
+                                    break;
+                                case 4:
+                                    Map<Integer, Regular> regularsDelete = regularService.getAllRegulars();
+                                    for(Regular regularDelete : regularsDelete.values()) {
+                                        System.out.println(regularDelete);
+                                    }
+                                    System.out.print("Enter customer ID to delete: ");
+                                    int deleteCustomerId = Integer.parseInt(scanner.nextLine());
+                                    regularService.delete(deleteCustomerId);
+                                    Regular regularDelete = regularService.getCustomer(deleteCustomerId);
+                                    System.out.println("Customer deleted: " + regularDelete);
+                                    break;
+                                case 5:
+                                    System.out.println("All regular customers:");
+                                    for (Regular regCustomer : regularService.getAllRegulars().values()) {
+                                        System.out.println(regCustomer);
+                                    }
+                            }
+                            break;
+                        case 2:
+                            System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add member customer.\n\"2\" Get member customer." +
+                                    "\n\"3\": Update the address of member customer.\n\"4\": Delete member customer.\n\"5\": Renew membership for customer.\n\"6\": Get all member customers.");
+                            option = scanner.nextLine();
+                            System.out.println("You chose: " + option);
+                            switch (Integer.parseInt(option)) {
+                                case 1:
+                                    Member member = memberService.addMember();
+                                    System.out.println("Member customer added:" + member);
+                                    break;
+                                case 2:
+                                    System.out.print("Enter customer ID: ");
+                                    int customerId = Integer.parseInt(scanner.nextLine());
+                                    Member memberGet = memberService.getMember(customerId);
+                                    if (memberGet != null) {
+                                        System.out.println("Member customer details:");
+                                        System.out.println(memberGet);
+                                    } else {
+                                        System.out.println("Member customer not found.");
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.print("Enter customer ID: ");
+                                    int updateCustomerId = Integer.parseInt(scanner.nextLine());
+                                    System.out.print("Enter new address: ");
+                                    String newAddress = scanner.nextLine();
+                                    memberService.updateMemberAddress(updateCustomerId, newAddress);
+                                    Member memberUpdate = memberService.getMember(updateCustomerId);
+                                    System.out.println("Customer address updated: " + memberUpdate);
+                                    break;
+                                case 4:
+                                    Map<Integer, Member> membersDelete = memberService.getAllMembers();
+                                    for(Member memberDelete : membersDelete.values()) {
+                                        System.out.println(memberDelete);
+                                    }
+                                    System.out.print("Enter customer ID to delete: ");
+                                    int deleteCustomerId = Integer.parseInt(scanner.nextLine());
+                                    Member memberDelete = memberService.getMember(deleteCustomerId);
+                                    memberService.deleteMember(deleteCustomerId);
+                                    System.out.println("Customer deleted: " + memberDelete);
+                                    break;
+                                case 5:
+                                    System.out.println("Enter customer ID to renew membership: ");
+                                    int renewMemberId = Integer.parseInt(scanner.nextLine());
+                                    memberService.checkAndRenewMembership(renewMemberId);
+                                    Member memberRenew = memberService.getMember(renewMemberId);
+                                    System.out.println("Member customer renewed: " + memberRenew);
+                                    break;
+                                case 6:
+                                    System.out.println("All member customers:");
+                                    for (Member memberCustomer : memberService.getAllMembers().values()) {
+                                        System.out.println(memberCustomer);
+                                    }
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add student customer.\n\"2\" Get student customer." +
+                                    "\n\"3\": Update the address of student customer.\n\"4\": Delete student customer.\n\"5\": Get all student customers.");
+                            option = scanner.nextLine();
+                            System.out.println("You chose: " + option);
+                            switch (Integer.parseInt(option)) {
+                                case 1:
+                                    Student student = studentService.addStudent();
+                                    System.out.println("Student customer added:" + student);
+                                    break;
+                                case 2:
+                                    System.out.print("Enter customer ID: ");
+                                    int customerId = Integer.parseInt(scanner.nextLine());
+                                    Student studentGet = studentService.getStudent(customerId);
+                                    if (studentGet != null) {
+                                        System.out.println("Student customer details:");
+                                        System.out.println(studentGet);
+                                    } else {
+                                        System.out.println("Student customer not found.");
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.print("Enter customer ID: ");
+                                    int updateCustomerId = Integer.parseInt(scanner.nextLine());
+                                    System.out.print("Enter new address: ");
+                                    String newAddress = scanner.nextLine();
+                                    studentService.updateStudentAddress(updateCustomerId, newAddress);
+                                    Student studentUpdate = studentService.getStudent(updateCustomerId);
+                                    System.out.println("Customer address updated: " + studentUpdate);
+                                    break;
+                                case 4:
+                                    Map<Integer, Student> studentsDelete = studentService.getAllStudents();
+                                    for(Student studentDelete : studentsDelete.values()) {
+                                        System.out.println(studentDelete);
+                                    }
+                                    System.out.print("Enter customer ID to delete: ");
+                                    int deleteCustomerId = Integer.parseInt(scanner.nextLine());
+                                    Student studentDelete = studentService.getStudent(deleteCustomerId);
+                                    studentService.deleteStudent(deleteCustomerId);
+                                    System.out.println("Customer deleted: " + studentDelete);
+                                    break;
+                                case 5:
+                                    System.out.println("All student customers:");
+                                    for (Student studentCustomer : studentService.getAllStudents().values()) {
+                                        System.out.println(studentCustomer);
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
+                    break;
+                case 5:
+                    
 
             }
         } while (Integer.parseInt(option) != 0);
@@ -340,28 +503,6 @@ public class Main {
 
 
 
-
-
-
-//        List<Author> authors = authorService.readAuthorsFromCSV("Files/Database/Author.csv");
-//
-//
-
-        // Display the read authors
-//        for (Author author : authors) {
-//            System.out.println(author);
-//
-//        }
-//
-//        authorService.findAuthorByNationality("Italian");
-//
-//
-//        Customer customer = new Member();
-//        System.out.println(customer);
-//
-//        List<Book> books = new ArrayList<>();
-//        List<Vinyl> vinyls = new ArrayList<>();
-//
 //        Cart cart = new Cart(customer, books, vinyls);
 //        System.out.println(cart);
 

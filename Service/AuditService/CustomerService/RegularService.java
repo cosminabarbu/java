@@ -40,13 +40,11 @@ public class RegularService {
         System.out.println("Enter the birthday of the customer (YYYY-MM-DD): ");
         String birthdayStr = scanner.nextLine();
         Date birthday = parseDate(birthdayStr);
-
         System.out.println("Enter the address of the customer: ");
         String address = scanner.nextLine();
-        scanner.nextLine();
         Regular regular = new Regular(firstName, lastName, birthday, address);
         Regular result = regularManagement.add(regular);
-        writeService.writeAction("added student");
+        writeService.writeAction("Regular added");
         return result;
     }
 
@@ -58,7 +56,7 @@ public class RegularService {
         WriteService writeService = new WriteService();
 
         regularManagement.delete(customerId);
-        writeService.writeAction("deleted customer");
+        writeService.writeAction("Regular deleted");
     }
 
     public Map<Integer, Regular> getAllRegulars(){

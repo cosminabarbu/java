@@ -43,16 +43,13 @@ public class MemberService {
 
         System.out.println("Enter the address of the member: ");
         String address = scanner.nextLine();
-        System.out.println("Enter the member ID: ");
-        int memberId = scanner.nextInt();
-        scanner.nextLine();
         System.out.println("Enter the subscription date of the member (YYYY-MM-DD): ");
         String subscriptionDateStr = scanner.nextLine();
         Date subscriptionDate = parseDate(subscriptionDateStr);
 
-        Member member = new Member(firstName, lastName, birthday, address, memberId, subscriptionDate);
+        Member member = new Member(firstName, lastName, birthday, address, subscriptionDate);
         Member result = memberManagement.add(member);
-        writeService.writeAction("added member");
+        writeService.writeAction("Member added");
         return result;
     }
 

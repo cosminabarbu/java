@@ -45,33 +45,33 @@ public class StudentService {
 
         System.out.println("Enter the address of the student: ");
         String address = scanner.nextLine();
-        scanner.nextLine();
         System.out.println("Enter the student ID: ");
-        int studentId = scanner.nextInt();
+        String studentId = scanner.nextLine();
         System.out.println("Enter the student's university name : ");
         String university = scanner.nextLine();
 
-        Student student = new Student(firstName, lastName, birthday, address, studentId, university);
+        Student student = new Student(firstName, lastName, birthday, address, Integer.parseInt(studentId), university);
         Student result = studentManagement.add(student);
         writeService.writeAction("added student");
         return result;
 
     }
 
-        public Student getStudent(int studentId) {
+    public Student getStudent(int studentId) {
         return studentManagement.get(studentId);
-        }
+    }
 
-        public void deleteStudent(int studentId) {
+    public void deleteStudent(int studentId) {
         WriteService writeService = new WriteService();
 
         studentManagement.delete(studentId);
         writeService.writeAction("deleted student");
-        }
 
-        public Map<Integer, Student> getAllStudents(){
+    }
+
+    public Map<Integer, Student> getAllStudents(){
             return studentManagement.getAll();
-        }
+    }
 
     public void updateStudentAddress(int studentId, String newAddress) {
         WriteService writeService = new WriteService();

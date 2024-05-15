@@ -8,7 +8,7 @@ public class Member extends Customer {
     public Member() {
     }
 
-    public Member(String firstName, String lastName, Date birthday, String address,  int memberId, Date subscriptionDate) {
+    public Member(String firstName, String lastName, Date birthday, String address, Date subscriptionDate) {
         super(firstName, lastName, birthday, address);
         this.subscriptionDate = subscriptionDate;
     }
@@ -23,7 +23,7 @@ public class Member extends Customer {
     public void renewMembership() {
         Date currentDate = new Date();
         long oneMonthInMillis = 30L * 24 * 60 * 60 * 1000;
-        long newSubscriptionTime = subscriptionDate.getTime() + oneMonthInMillis;
+        long newSubscriptionTime = currentDate.getTime() + oneMonthInMillis;
         subscriptionDate = new Date(newSubscriptionTime);
         System.out.println("Membership renewed. New expiration date: " + subscriptionDate);
     }
