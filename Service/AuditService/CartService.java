@@ -13,6 +13,11 @@ import Models.Customer.Regular;
 import Models.Customer.Student;
 import Models.Items.Book;
 import Models.Items.Vinyl;
+import Service.AuditService.CustomerService.MemberService;
+import Service.AuditService.CustomerService.RegularService;
+import Service.AuditService.CustomerService.StudentService;
+import Service.AuditService.ItemService.BookService;
+import Service.AuditService.ItemService.VinylService;
 
 import java.util.*;
 
@@ -22,18 +27,22 @@ public class CartService {
     private Map<Integer, Member> members;
     private Map<Integer, Regular> regulars;
     private Map<Integer, Student> students;
-    private MemberManagement memberManagement;
-    private RegularManagement regularManagement;
-    private StudentManagement studentManagement;
+    private MemberService memberService;
+    private RegularService regularService;
+    private StudentService studentService;
+    private BookService bookService;
+    private VinylService vinylService;
     private Map<Integer, Book> books;
     private Map<Integer, Vinyl> vinyls;
-    private BookManagement bookManagement;
-    private VinylManagement vinylManagement;
     private static CartService instance;
 
     private CartService() {
         this.cartManagement = new CartManagement();
-        this.memberManagement = new MemberManagement();
+        this.memberService = MemberService.getInstance();
+        this.regularService = RegularService.getInstance();
+        this.studentService = StudentService.getInstance();
+        this.bookService = BookService.getInstance();
+        this.vinylService = VinylService.getInstance();
     }
 
     public static CartService getInstance() {
@@ -52,74 +61,79 @@ public class CartService {
         WriteService writeService = new WriteService();
 
 
-        System.out.println("Select the type of customer from 1-3: \n  1. Choose member \n 2. Choose regular \n 3. Choose student");
-        int option = scanner.nextInt();
+        System.out.println("Select the type of customer from 1-3: \n 1. Choose member \n 2. Choose regular \n 3. Choose student");
+        String option = scanner.nextLine();
         Customer chosenCustomer;
         Book chosenBook;
         Vinyl chosenVinyl;
         List<Book> cartBooks = new ArrayList<>();
         List<Vinyl> cartViynls = new ArrayList<>();
-        if(option == 1){
+        if(Integer.parseInt(option) == 1){
             System.out.println("You chose member: ");
             System.out.println("Choose from the following members: ");
-            members = memberManagement.getAll();
+            members = memberService.getAllMembers();
             for(Map.Entry<Integer, Member> member : members.entrySet()){
-                System.out.println("member ID: " + member.getKey() + " \n member: " + member.getValue());
+                System.out.println("Member ID: " + member.getKey() + " \nMember: " + member.getValue());
             }
-            int memberId = scanner.nextInt();
-            chosenCustomer  = members.get(memberId);
-        } else if (option == 2) {
+            String memberId = scanner.nextLine();
+            chosenCustomer  = members.get(Integer.parseInt(memberId));
+        } else if (Integer.parseInt(option) == 2) {
             System.out.println("You chose regular: ");
             System.out.println("Choose from the following regulars: ");
-            regulars = regularManagement.getAll();
+            regulars = regularService.getAllRegulars();
             for(Map.Entry<Integer, Regular> regular : regulars.entrySet()){
-                System.out.println("regular ID: " + regular.getKey() + " \n regular: " + regular.getValue());
+                System.out.println("Regular ID: " + regular.getKey() + " \nRegular: " + regular.getValue());
             }
-            int regularId = scanner.nextInt();
-            chosenCustomer = regulars.get(regularId);
-        } else if (option == 3) {
+            String regularId = scanner.nextLine();
+            chosenCustomer = regulars.get(Integer.parseInt(regularId));
+        } else if (Integer.parseInt(option) == 3) {
             System.out.println("You chose student: ");
             System.out.println("Choose from the following students: ");
-            students = studentManagement.getAll();
+            students = studentService.getAllStudents();
             for(Map.Entry<Integer, Student> student : students.entrySet()){
-                System.out.println("student ID: " + student.getKey() + " \n student: " + student.getValue());
+                System.out.println("Student ID: " + student.getKey() + " \nStudent: " + student.getValue());
             }
-            int studentId = scanner.nextInt();
-            chosenCustomer = students.get(studentId);
+            String studentId = scanner.nextLine();
+            chosenCustomer = students.get(Integer.parseInt(studentId));
         } else {
             System.out.println("Invalid option");
             return null;
         }
 
         System.out.println("Add books from the following list: ");
-        books = bookManagement.getAllBooks();
-        int bookId = scanner.nextInt();
-        while(bookId != -1 ) {
+        books = bookService.getAll();
+        for (Map.Entry<Integer, Book> book : books.entrySet()) {
+            System.out.println("Book ID: " + book.getKey() + " \nBook: " + book.getValue());
+        }
+        String bookId = scanner.nextLine();
+        while(Integer.parseInt(bookId) != -1 ) {
             for (Map.Entry<Integer, Book> book : books.entrySet()) {
-                System.out.println("book ID: " + book.getKey() + " \n book: " + book.getValue());
+                System.out.println("Book ID: " + book.getKey() + " \nBook: " + book.getValue());
             }
-            chosenBook = books.get(bookId);
+            chosenBook = books.get(Integer.parseInt(bookId));
             cartBooks.add(chosenBook);
-            bookId = scanner.nextInt();
+            bookId = scanner.nextLine();
 
         }
 
         System.out.println("Add vinyls from the following list: ");
-        vinyls = vinylManagement.getAllVinyls();
-        int vinylId = scanner.nextInt();
-        while(vinylId != -1 ) {
+        vinyls = vinylService.getAll();
+        for (Map.Entry<Integer, Vinyl> vinyl : vinyls.entrySet()) {
+            System.out.println("Vinyl ID: " + vinyl.getKey() + " \nVinyl: " + vinyl.getValue());
+        }
+        String vinylId = scanner.nextLine();
+        while(Integer.parseInt(vinylId) != -1 ) {
             for (Map.Entry<Integer, Vinyl> vinyl : vinyls.entrySet()) {
-                System.out.println("vinyl ID: " + vinyl.getKey() + " \n vinyl: " + vinyl.getValue());
+                System.out.println("Vinyl ID: " + vinyl.getKey() + " \nVinyl: " + vinyl.getValue());
             }
-            chosenVinyl = vinyls.get(vinylId);
+            chosenVinyl = vinyls.get(Integer.parseInt(vinylId));
             cartViynls.add(chosenVinyl);
-            vinylId = scanner.nextInt();
-
+            vinylId = scanner.nextLine();
         }
 
         Cart cart = new Cart(chosenCustomer, cartBooks, cartViynls);
         Cart result = cartManagement.addCart(cart);
-        writeService.writeAction("added cart");
+        writeService.writeAction("Cart added");
         return result;
     }
 
@@ -130,51 +144,51 @@ public class CartService {
     public void deleteCart(Cart cart){
         WriteService writeService = new WriteService();
         cartManagement.deleteCart(cart);
-        writeService.writeAction("deleted cart");
+        writeService.writeAction("Cart deleted");
     }
 
     public void addBook(Cart cart, Book book) {
         WriteService writeService = new WriteService();
         cartManagement.addBookToCart(cart, book);
-        writeService.writeAction("added book to cart");
+        writeService.writeAction("Book added to cart");
     }
 
     public void addVinyl(Cart cart, Vinyl vinyl) {
         WriteService writeService = new WriteService();
         cartManagement.addVinylToCart(cart, vinyl);
-        writeService.writeAction("added vinyl to cart");
+        writeService.writeAction("Vinyl added to cart");
     }
 
     public void deleteBook(Cart cart, Book book) {
         WriteService writeService = new WriteService();
         cartManagement.deleteBookFromCart(cart, book);
-        writeService.writeAction("deleted book from cart");
+        writeService.writeAction("Book deleted from cart");
     }
 
     public void deleteVinyl(Cart cart, Vinyl vinyl) {
         WriteService writeService = new WriteService();
         cartManagement.deleteVinylFromCart(cart, vinyl);
-        writeService.writeAction("deleted vinyl from cart");
+        writeService.writeAction("Vinyl deleted from cart");
     }
 
     public List<Book> bestBooks(){
         WriteService writeService = new WriteService();
         List<Book> bestBooks = cartManagement.bestsellerBooks();
-        writeService.writeAction("best books called");
+        writeService.writeAction("Best books called");
         return bestBooks;
     }
 
     public List<Vinyl> bestVinyls(){
         WriteService writeService = new WriteService();
         List<Vinyl> bestVinyls = cartManagement.bestsellerVinyls();
-        writeService.writeAction("best vinyls called");
+        writeService.writeAction("Best vinyls called");
         return bestVinyls;
     }
 
     public double getTotal(int cartIndex){
         WriteService writeService = new WriteService();
         double total = cartManagement.getTotal(cartIndex);
-        writeService.writeAction("total called");
+        writeService.writeAction("Total called");
         return total;
     }
 }

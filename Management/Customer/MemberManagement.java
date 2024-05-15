@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class MemberManagement {
     Map<Integer, Member> membersList = new HashMap<>();
+//    private static MemberManagement instance;
+//
 
     public Member add(Member member) {
         membersList.put(member.getCustomerId(), member); return member;

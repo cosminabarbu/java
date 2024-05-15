@@ -71,7 +71,6 @@ public class Book extends LibraryItem {
                 ", price=" + price +
                 ", stock=" + stock +
                 ", rating=" + rating +
-                ", itemId=" + itemId +
                 ", author=" + author.getName() +
                 ", section=" + section +
                 ", publisher=" + publisher.getName() +

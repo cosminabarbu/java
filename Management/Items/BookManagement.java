@@ -109,7 +109,6 @@ public class BookManagement {
             for (Map.Entry<Author, Integer> entry : authorBookCount.entrySet()) {
                 if (entry.getValue() > maxBooks) {
                     maxBooks = entry.getValue();
-//                    authorWithMostBooks.add(entry.getKey());
                 }
             }
             for(Map.Entry<Author, Integer> entry : authorBookCount.entrySet()) {

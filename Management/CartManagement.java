@@ -20,7 +20,7 @@ public class CartManagement {
                 return null;
             }
         }
-        addCart(cart);
+        cartsList.add(cart);
         System.out.println("Cart added: " + cart);
         return cart;
     }
@@ -66,7 +66,7 @@ public class CartManagement {
     public void addBookToCart(Cart cart, Book book) {
         if (cartsList.contains(cart)) {
             cart.addBook(book);
-            System.out.println(book.getTitle() + " added to cart.");
+//            System.out.println(book.getTitle() + " added to cart.");
         } else {
             System.out.println("Cart not found.");
         }
@@ -75,7 +75,7 @@ public class CartManagement {
     public void addVinylToCart(Cart cart, Vinyl vinyl) {
         if (cartsList.contains(cart)) {
             cart.addVinyl(vinyl);
-            System.out.println(vinyl.getTitle() + " added to cart.");
+//            System.out.println(vinyl.getTitle() + " added to cart.");
         } else {
             System.out.println("Cart not found.");
         }
@@ -107,7 +107,6 @@ public class CartManagement {
 
     public List<Book> bestsellerBooks() {
         Map<Book, Integer> bookFrequency = new HashMap<>();
-
         for (Cart cart : cartsList) {
             for (Book book : cart.getBooks()) {
                 bookFrequency.put(book, bookFrequency.getOrDefault(book, 0) + 1);

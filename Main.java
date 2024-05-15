@@ -490,21 +490,119 @@ public class Main {
                     }
                     break;
                 case 5:
-                    
+                    System.out.println("\nEnter your choice: \n" +
+                            "\"0\": Exit.\n" +
+                            "\"1\": Add cart.\n" +
+                            "\"2\": Get cart.\n" +
+                            "\"3\": Delete cart.\n" +
+                            "\"4\": Add book to cart.\n" +
+                            "\"5\": Add vinyl to cart.\n" +
+                            "\"6\": Delete book from cart.\n" +
+                            "\"7\": Delete vinyl from cart.\n" +
+                            "\"8\": Best books.\n" +
+                            "\"9\": Best vinyls.\n" +
+                            "\"10\": Get total of cart.");
+                    option = scanner.nextLine();
+                    System.out.println("You chose: " + option);
+                    switch (Integer.parseInt(option)) {
+                        case 1:
+                            Cart cart = cartService.addCart();
+                            if (cart != null) {
+                                System.out.println("Cart added successfully.");
+                            } else {
+                                System.out.println("Failed to add cart.");
+                            }
+                            break;
+                        case 2:
+                            System.out.print("Enter the cart index: ");
+                            int cartId = Integer.parseInt(scanner.nextLine());
+                            Cart cartGet = cartService.getCart(cartId);
+                            if (cartGet != null) {
+                                System.out.println("Cart details:");
+                                System.out.println(cartGet);
+                            } else {
+                                System.out.println("Cart not found.");
+                            }
+                            break;
+                        case 3:
+                            System.out.println("Enter the index of the cart to be deleted: ");
+                            String cartIdDelete = scanner.nextLine();
+                            Cart cartDelete = cartService.getCart(Integer.parseInt(cartIdDelete));
+                            cartService.deleteCart(cartDelete);
+                            break;
+                        case 4:
+                            System.out.println("Enter the index of the cart to add the book to: ");
+                            String cartIdBook = scanner.nextLine();
+                            Cart cartAddBook = cartService.getCart(Integer.parseInt(cartIdBook));
+                            System.out.println("Enter the ID of the book to be added: ");
+                            String bookId = scanner.nextLine();
+                            Book bookAdded = bookService.getBook(Integer.parseInt(bookId));
+                            cartService.addBook(cartAddBook, bookAdded);
+                            System.out.println("Cart with new book list: " + cartAddBook);
+                            break;
+                        case 5:
+                            System.out.println("Enter the index of the cart to add the vinyl to: ");
+                            String cartIdVinyl = scanner.nextLine();
+                            Cart cartAddVinyl = cartService.getCart(Integer.parseInt(cartIdVinyl));
+                            System.out.println("Enter the ID of the vinyl to be added: ");
+                            String vinylId = scanner.nextLine();
+                            Vinyl vinylAdded = vinylService.getVinyl(Integer.parseInt(vinylId));
+                            cartService.addVinyl(cartAddVinyl, vinylAdded);
+                            System.out.println("Cart with new vinyl list: " + cartAddVinyl);
+                            break;
+                        case 6:
+                            System.out.println("Enter the index of the cart to remove book from: ");
+                            String cartIndexDeleteBook = scanner.nextLine();
+                            Cart cartDeleteBook = cartService.getCart(Integer.parseInt(cartIndexDeleteBook));
+                            System.out.println("Enter the ID of the book to be deleted: ");
+                            String bookIdCartDelete = scanner.nextLine();
+                            Book bookCartDelete = bookService.getBook(Integer.parseInt(bookIdCartDelete));
+                            cartService.deleteBook(cartDeleteBook, bookCartDelete);
+                            System.out.println("Cart with new book list: " + cartDeleteBook);
+                            break;
+                        case 7:
+                            System.out.println("Enter the index of the cart to remove vinyl from: ");
+                            String cartIndexDeleteVinyl = scanner.nextLine();
+                            Cart cartDeleteVinyl =  cartService.getCart(Integer.parseInt(cartIndexDeleteVinyl));
+                            System.out.println("Enter the ID of the vinyl to be deleted: ");
+                            String vinylIdCartDelete = scanner.nextLine();
+                            Vinyl vinylCartDelete = vinylService.getVinyl(Integer.parseInt(vinylIdCartDelete));
+                            cartService.deleteVinyl(cartDeleteVinyl, vinylCartDelete);
+                            System.out.println("Cart with new vinyl list: " + cartDeleteVinyl);
+                            break;
+                        case 8:
+                            List<Book> bestBooks = cartService.bestBooks();
+                            System.out.println("Best books list: ");
+                            for (Book book : bestBooks) {
+                                System.out.println(book);
+                            }
+                            break;
+                        case 9:
+                            List<Vinyl> bestVinyls = cartService.bestVinyls();
+                            System.out.println("Best vinyls list: ");
+                            for (Vinyl vinyl : bestVinyls) {
+                                System.out.println(vinyl);
+                            }
+                            break;
+                        case 10:
+                            System.out.println("Enter the index of the cart to get total of: ");
+                            String cartIndexGetTotal = scanner.nextLine();
+                            Cart cartTotal = cartService.getCart(Integer.parseInt(cartIndexGetTotal));
+                            double total = cartService.getTotal(Integer.parseInt(cartIndexGetTotal));
+                            System.out.println("Cart " + cartTotal + "\nWith total of: " + total);
+                            break;
+
+
+
+
+                    }
+                    break;
 
             }
         } while (Integer.parseInt(option) != 0);
         scanner.close();
 
 
-
-
-
-
-
-
-//        Cart cart = new Cart(customer, books, vinyls);
-//        System.out.println(cart);
 
     }
 }
