@@ -8,6 +8,7 @@ import Service.AuditService.WriteService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -66,6 +67,10 @@ public class StudentService {
 
         studentManagement.delete(studentId);
         writeService.writeAction("deleted student");
+        }
+
+        public Map<Integer, Student> getAllStudents(){
+            return studentManagement.getAll();
         }
 
     public void updateStudentAddress(int studentId, String newAddress) {

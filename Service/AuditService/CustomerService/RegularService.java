@@ -7,6 +7,7 @@ import Service.AuditService.WriteService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RegularService {
@@ -58,6 +59,10 @@ public class RegularService {
 
         regularManagement.delete(customerId);
         writeService.writeAction("deleted customer");
+    }
+
+    public Map<Integer, Regular> getAllRegulars(){
+        return regularManagement.getAll();
     }
 
     public void updateCustomerAddress(int customerId, String newAddress) {

@@ -6,6 +6,8 @@ import Service.AuditService.WriteService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MemberService {
@@ -56,6 +58,10 @@ public class MemberService {
 
     public Member getMember(int memberId) {
         return memberManagement.get(memberId);
+    }
+
+    public Map<Integer, Member> getAllMembers(){
+        return memberManagement.getAll();
     }
 
     public void updateMemberAddress(int memberId, String newAddress) {
