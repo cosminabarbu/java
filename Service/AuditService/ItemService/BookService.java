@@ -86,11 +86,11 @@ public class BookService {
         System.out.println("Enter the rating of the book:");
         double rating = scanner.nextDouble();
         System.out.println("Enter the author of the book:");
-        Author author = getAuthorByName(scanner.nextLine());
+        Author author = authorManagement.get(scanner.nextLine());
         System.out.println("Enter the section of the book:");
         Section section = getSectionByName(scanner.nextLine());
         System.out.println("Enter the publisher of the book:");
-        Publisher publisher = getPublisherByName(scanner.nextLine());
+        Publisher publisher = publisherManagement.get(scanner.nextLine());
         System.out.println("Enter the number of pages of the book:");
         int pageNo = scanner.nextInt();
         System.out.println("Enter the year of publication of the book:");
@@ -103,14 +103,14 @@ public class BookService {
         return book;
     }
 
-    private Author getAuthorByName(String name) {
-        for (Author author : authorsList) {
-            if (author.getName().equalsIgnoreCase(name)) {
-                return author;
-            }
-        }
-        return null;
-    }
+//    private Author getAuthorByName(String name) {
+//        for (Author author : authorsList) {
+//            if (author.getName().equalsIgnoreCase(name)) {
+//                return author;
+//            }
+//        }
+//        return null;
+//    }
 
     private Section getSectionByName(String name) {
         for (Section section : Section.values()) {
@@ -121,14 +121,14 @@ public class BookService {
         return null;
     }
 
-    private Publisher getPublisherByName(String name) {
-        for (Publisher publisher : publishersList) {
-            if (publisher.getName().equalsIgnoreCase(name)) {
-                return publisher;
-            }
-        }
-        return null;
-    }
+//    private Publisher getPublisherByName(String name) {
+//        for (Publisher publisher : publishersList) {
+//            if (publisher.getName().equalsIgnoreCase(name)) {
+//                return publisher;
+//            }
+//        }
+//        return null;
+//    }
 
     public Book getBook(int bookId) {
         return bookManagement.get(bookId);
