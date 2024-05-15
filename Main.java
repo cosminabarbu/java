@@ -33,8 +33,8 @@ public class Main {
 
         List<Author> authors = authorService.readAuthorsFromCSV("Files/Database/Author.csv");
         List<Publisher> publishers = publisherService.readPublishersFromCSV("Files/Database/Publisher.csv", authors);
-//        List<Book> books = bookService.readBooksFromCSV("Files/Database/Book.csv");
-//        List<Vinyl> vinyls = vinylService.readVinylsFromCSV("Files/Database/Vinyl.csv");
+        List<Book> books = bookService.readBooksFromCSV("Files/Database/Book.csv");
+        List<Vinyl> vinyls = vinylService.readVinylsFromCSV("Files/Database/Vinyl.csv");
 
         System.out.println("Library");
         Scanner scanner = new Scanner(System.in);
@@ -163,6 +163,23 @@ public class Main {
                     }
                     break;
                 case 3:
+                    System.out.println("Enter the type of the item:\n\"1\":Books.\n\"2\": Vinyls. ");
+                    option = scanner.nextLine();
+                    System.out.println("You chose: " + option);
+                    switch (Integer.parseInt(option)) {
+                        case 1:
+                            System.out.println("\nEnter your choice: \n\"0\": Exit.\n\"1\": Add book.\n\"2\" Get book." +
+                                    "\n\"3\": Update book.\n\"4\": Delete book.\n\"5\": Find author with most books." +
+                                    "\n\"6\": Find book by title.\n\"7\": Find book by section.\n\"8\": Get all books." );
+                            option = scanner.nextLine();
+                            System.out.println("You chose: " + option);
+                            switch (Integer.parseInt(option)) {
+                                case 1:
+                                    Book bookAdd = bookService.addBook();
+                                    System.out.println("Book added: " + bookAdd);
+                                    break;
+                            }
+                    }
 
             }
         } while (Integer.parseInt(option) != 0);
