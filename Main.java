@@ -136,14 +136,34 @@ public class Main {
                             break;
                         case 5:
                             System.out.println("Enter the name of the publisher to add author to: ");
-                            String publisherName5 = scanner.nextLine();
-                            Publisher publisher5 = publisherService.getPublisher(publisherName5);
+                            String publisherNameAddAuthor = scanner.nextLine();
+                            Publisher publisherAddAuthor = publisherService.getPublisher(publisherNameAddAuthor);
                             System.out.println("Enter the name of the author to be added: ");
-                            String authorName5 = scanner.nextLine();
-                            Author author5 = authorService.getAuthor(authorName5);
-                            publisherService.addAuthorToPublisher(publisher5, author5);
-
+                            String authorNameAddAuthor = scanner.nextLine();
+                            Author authorAddAuthor = authorService.getAuthor(authorNameAddAuthor);
+                            publisherService.addAuthorToPublisher(publisherAddAuthor, authorAddAuthor);
+                            System.out.println("Publisher with new author list: " + publisherAddAuthor);
+                            break;
+                        case 6:
+                            System.out.println("Enter the name of the publisher to remove author from: ");
+                            String publisherNameDeleteAuthor = scanner.nextLine();
+                            Publisher publisherDeleteAuthor = publisherService.getPublisher(publisherNameDeleteAuthor);
+                            System.out.println("Enter the name of the author to be deleted: ");
+                            String authorNameDeleteAuthor = scanner.nextLine();
+                            Author authorDeleteAuthor = authorService.getAuthor(authorNameDeleteAuthor);
+                            publisherService.removeAuthorFromPublisher(publisherDeleteAuthor, authorDeleteAuthor);
+                            System.out.println("Publisher with new author list: " + publisherDeleteAuthor);
+                            break;
+                        case 7:
+                            List<Publisher> publishersGetAll = publisherService.getAll();
+                            for(Publisher publisher : publishersGetAll) {
+                                System.out.println(publisher);
+                            }
+                            break;
                     }
+                    break;
+                case 3:
+
             }
         } while (Integer.parseInt(option) != 0);
         scanner.close();

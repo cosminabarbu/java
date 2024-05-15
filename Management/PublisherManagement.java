@@ -32,6 +32,7 @@ public class PublisherManagement {
             if(publisher.getName().toLowerCase().equals(name.toLowerCase())){
                 iterator.remove();
                 System.out.println("Publisher " + name + " deleted.");
+                return;
             }
         }
         System.out.println("Publisher " + name + " was not found.");
@@ -65,8 +66,12 @@ public class PublisherManagement {
 
     public void addAuthorToPublisher(Publisher publisher, Author author){
         if(publishersList.contains(publisher)){
-            publisher.addAuthor(author);
-            System.out.println(author.getName() + " added to publisher " + publisher.getName());
+            if (!publisher.getAuthors().contains(author)) {
+                publisher.addAuthor(author);
+                System.out.println(author.getName() + " added to publisher " + publisher.getName());
+            } else {
+                System.out.println(author.getName() + " is already associated with publisher " + publisher.getName());
+            }
         }
         else {
             System.out.println("Publisher was not found.");
