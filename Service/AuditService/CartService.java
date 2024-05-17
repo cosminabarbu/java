@@ -61,14 +61,14 @@ public class CartService {
         WriteService writeService = new WriteService();
 
 
-        System.out.println("Select the type of customer from 1-3: \n 1. Choose member \n 2. Choose regular \n 3. Choose student");
+        System.out.println("Select the type of customer from 1-3: \n 1. Choose regular \n 2. Choose member \n 3. Choose student");
         String option = scanner.nextLine();
         Customer chosenCustomer;
         Book chosenBook;
         Vinyl chosenVinyl;
         List<Book> cartBooks = new ArrayList<>();
         List<Vinyl> cartViynls = new ArrayList<>();
-        if(Integer.parseInt(option) == 1){
+        if(Integer.parseInt(option) == 2){
             System.out.println("You chose member: ");
             System.out.println("Choose from the following members: ");
             members = memberService.getAllMembers();
@@ -77,7 +77,7 @@ public class CartService {
             }
             String memberId = scanner.nextLine();
             chosenCustomer  = members.get(Integer.parseInt(memberId));
-        } else if (Integer.parseInt(option) == 2) {
+        } else if (Integer.parseInt(option) == 1) {
             System.out.println("You chose regular: ");
             System.out.println("Choose from the following regulars: ");
             regulars = regularService.getAllRegulars();

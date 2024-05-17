@@ -86,7 +86,7 @@ public class CartManagement {
     public void deleteBookFromCart(Cart cart, Book book) {
         if (cartsList.contains(cart)) {
             if (cart.deleteBook(book)) {
-                System.out.println(book.getTitle() + " removed from cart.");
+                //System.out.println(book.getTitle() + " removed from cart.");
             } else {
                 System.out.println("Book not found in cart.");
             }
@@ -98,7 +98,7 @@ public class CartManagement {
     public void deleteVinylFromCart(Cart cart, Vinyl vinyl) {
         if (cartsList.contains(cart)) {
             if (cart.deleteVinyl(vinyl)) {
-                System.out.println(vinyl.getTitle() + " removed from cart.");
+                //System.out.println(vinyl.getTitle() + " removed from cart.");
             } else {
                 System.out.println("Vinyl not found in cart.");
             }
