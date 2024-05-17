@@ -591,18 +591,10 @@ public class Main {
                             double total = cartService.getTotal(Integer.parseInt(cartIndexGetTotal));
                             System.out.println("Cart " + cartTotal + "\nWith total of: " + total);
                             break;
-
-
-
-
                     }
                     break;
-
             }
         } while (Integer.parseInt(option) != 0);
         scanner.close();
-
-
-
     }
 }

@@ -65,8 +65,9 @@ public class CartManagement {
 
     public void addBookToCart(Cart cart, Book book) {
         if (cartsList.contains(cart)) {
-            cart.addBook(book);
-//            System.out.println(book.getTitle() + " added to cart.");
+            if(!cart.addBook(book)){
+              System.out.println("Cannot add book. " + book.getTitle() + " is out of stock.");
+            }
         } else {
             System.out.println("Cart not found.");
         }
@@ -74,8 +75,9 @@ public class CartManagement {
 
     public void addVinylToCart(Cart cart, Vinyl vinyl) {
         if (cartsList.contains(cart)) {
-            cart.addVinyl(vinyl);
-//            System.out.println(vinyl.getTitle() + " added to cart.");
+            if (!cart.addVinyl(vinyl)) {
+                System.out.println("Cannot add vinyl. " + vinyl.getTitle() + " is out of stock.");
+            }
         } else {
             System.out.println("Cart not found.");
         }

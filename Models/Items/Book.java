@@ -52,7 +52,6 @@ public class Book extends LibraryItem {
         this.pageNo = pageNo;
     }
 
-
     public Integer getYear() {
         return year;
     }
@@ -60,8 +59,6 @@ public class Book extends LibraryItem {
     public void setYear(Integer year) {
         this.year = year;
     }
-
-    public Author findAuthorWithMostBooks(){ return author;}
 
     @Override
     public String toString() {

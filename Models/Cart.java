@@ -1,7 +1,6 @@
 package Models;
 import Models.Customer.Customer;
 import Models.Customer.Member;
-import Models.Customer.Regular;
 import Models.Items.Book;
 import Models.Items.Vinyl;
 
@@ -19,23 +18,43 @@ public class Cart {
     }
 
     public Cart(Customer customer, List<Book> books, List<Vinyl> vinyls) {
+        this();
         this.customer = customer;
-        this.books = new ArrayList<>(books);
-        this.vinyls = new ArrayList<>(vinyls);
-        updateBookStock();
-        updateVinylStock();
+        addBooksToCart(books);
+        addVinylsToCart(vinyls);
     }
 
     public Cart(Member customer, List<Book> books, List<Vinyl> vinyls) {
+        this();
         this.customer = customer;
-        this.books = new ArrayList<>(books);
-        this.vinyls = new ArrayList<>(vinyls);
 
         if (customer.isMembershipExpired(customer)) {
             System.out.println("Cannot create cart. Membership is expired.");
         } else {
-            updateBookStock();
-            updateVinylStock();
+            addBooksToCart(books);
+            addVinylsToCart(vinyls);
+        }
+    }
+
+    private void addBooksToCart(List<Book> books) {
+        for (Book book : books) {
+            if (book.isInStock()) {
+                this.books.add(book);
+                book.setStock(book.getStock() - 1);
+            } else {
+                System.out.println("Book " + book.getTitle() + " is out of stock and was not added to the cart.");
+            }
+        }
+    }
+
+    private void addVinylsToCart(List<Vinyl> vinyls) {
+        for (Vinyl vinyl : vinyls) {
+            if (vinyl.isInStock()) {
+                this.vinyls.add(vinyl);
+                vinyl.setStock(vinyl.getStock() - 1);
+            } else {
+                System.out.println("Vinyl " + vinyl.getTitle() + " is out of stock and was not added to the cart.");
+            }
         }
     }
 
@@ -74,13 +93,15 @@ public class Cart {
         this.vinyls = vinyls;
     }
 
-    public void addBook(Book book) {
-        if (book.getStock() > 0) {
+    public boolean addBook(Book book) {
+        if (book.isInStock()) {
             books.add(book);
             book.setStock(book.getStock() - 1);
             System.out.println(book.getTitle() + " added to cart. New stock: " + book.getStock());
+            return true;
         } else {
             System.out.println("Book " + book.getTitle() + " is out of stock.");
+            return false;
         }
     }
 
@@ -95,13 +116,15 @@ public class Cart {
         }
     }
 
-    public void addVinyl(Vinyl vinyl) {
-        if (vinyl.getStock() > 0) {
+    public boolean addVinyl(Vinyl vinyl) {
+        if (vinyl.isInStock()) {
             vinyls.add(vinyl);
             vinyl.setStock(vinyl.getStock() - 1);
             System.out.println(vinyl.getTitle() + " added to cart. New stock: " + vinyl.getStock());
+            return true;
         } else {
             System.out.println("Vinyl " + vinyl.getTitle() + " is out of stock.");
+            return false;
         }
     }
 
