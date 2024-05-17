@@ -15,6 +15,8 @@ public class Cart {
     public Cart() {
         this.books = new ArrayList<>();
         this.vinyls = new ArrayList<>();
+        addBooksToCart(books);
+        addVinylsToCart(vinyls);
     }
 
     public Cart(Customer customer, List<Book> books, List<Vinyl> vinyls) {
@@ -100,7 +102,7 @@ public class Cart {
             System.out.println(book.getTitle() + " added to cart. New stock: " + book.getStock());
             return true;
         } else {
-            System.out.println("Book " + book.getTitle() + " is out of stock.");
+            //System.out.println("Book " + book.getTitle() + " is out of stock.");
             return false;
         }
     }
@@ -123,7 +125,7 @@ public class Cart {
             System.out.println(vinyl.getTitle() + " added to cart. New stock: " + vinyl.getStock());
             return true;
         } else {
-            System.out.println("Vinyl " + vinyl.getTitle() + " is out of stock.");
+            //System.out.println("Vinyl " + vinyl.getTitle() + " is out of stock.");
             return false;
         }
     }

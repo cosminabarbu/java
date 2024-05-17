@@ -32,18 +32,18 @@ public class BookManagement {
     public void delete(int bookId){
         if(booksList.containsKey(bookId)){
             booksList.remove(bookId);
-            System.out.println("Book with ID" + bookId + " was removed");
+            System.out.println("Book with ID " + bookId + " was removed");
         } else {
-            System.out.println("Book with ID" + bookId + " was not found");
+            System.out.println("Book with ID " + bookId + " was not found");
         }
     }
 
     public Book get(int bookId){
         if(booksList.containsKey(bookId)){
-            System.out.println("Book with ID" + bookId + " found");
+            System.out.println("Book with ID " + bookId + " found");
             return booksList.get(bookId);
         } else {
-            System.out.println("Book with ID" + bookId + " was not found");
+            System.out.println("Book with ID " + bookId + " was not found");
             return null;
         }
     }
@@ -55,10 +55,10 @@ public class BookManagement {
     public Book update(int bookId, Book updatedBook){
         if(booksList.containsKey(bookId)){
             booksList.put(bookId, updatedBook);
-            System.out.println("Book with ID" + bookId + " was updated successfully");
+            System.out.println("Book with ID " + bookId + " was updated successfully");
             return booksList.get(bookId);
         } else {
-            System.out.println("Book with ID" + bookId + " was not found");
+            System.out.println("Book with ID " + bookId + " was not found");
             return null;
         }
     }

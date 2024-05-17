@@ -66,10 +66,10 @@ public class LibraryItem implements Item {
         return stock != 0;
     }
 
-    @Override
-    public boolean hasGoodRating(){
-        return rating >= 3;
-    }
+//    @Override
+//    public boolean hasGoodRating(){
+//        return rating >= 3;
+//    }
 
     @Override
     public String toString() {
